@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    tools:context=".login.view.impl.LoginActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:src="@drawable/logo_white" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        android:layout_margin="20dp"
+        android:padding="@dimen/_10sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_height="@dimen/_80sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/rectangle"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edit_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_regular"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/border"
+                        android:inputType="textPersonName"
+                        android:hint="@string/username"
+                        android:text="rahul.saini@lexxdigital.com" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_35sdp"
+                    android:layout_marginLeft="@dimen/_35sdp"
+                    android:textSize="@dimen/_15sdp"
+                    android:fontFamily="@font/raleway_regular"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/username" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_height="@dimen/_80sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/rectangle"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edit_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_regular"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/border"
+                        android:inputType="textPassword"
+                        android:hint="@string/password"
+                        android:text="123456" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_35sdp"
+                    android:layout_marginLeft="@dimen/_35sdp"
+                    android:textSize="@dimen/_15sdp"
+                    android:fontFamily="@font/raleway_regular"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/password" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@drawable/btn_color"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textSize="@dimen/_14sdp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:text="@string/login" />
+
+            <Button
+                android:id="@+id/btn_contact_support"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@drawable/btn_white_bg"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:onClick="goContactSupport"
+                android:text="@string/contact_support" />
+            <TextView
+                android:id="@+id/txt_forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_15sdp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:onClick="goForgot"
+                android:textColor="@color/txt_grey_two"
+                android:fontFamily="@font/raleway_regular"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/forgot_password" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+</LinearLayout>

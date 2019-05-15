@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SingleOrderDetailFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@color/bg_login_start"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/raleway_bold"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:text="Order ID: 1234" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_16sdp"
+                    android:text="Customer Name: " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_16sdp"
+                    android:text="N/A" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_16sdp"
+                    android:text="Contact No.: " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="@color/bg_login_start"
+                    android:fontFamily="@font/open_sans_semi_bold"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_16sdp"
+                    android:text="+1 252 3632425" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_16sdp"
+                    android:text="Email:  " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textSize="@dimen/_16sdp"
+                    android:text="hee.young@gmail.com" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="#707070"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="#989898"
+                    android:layout_marginRight="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:textColor="@color/white"
+                    android:text="Product" />
+                <TextView
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:background="#989898"
+                    android:layout_marginRight="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Price" />
+                <TextView
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:background="#989898"
+                    android:layout_marginRight="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Qty" />
+                <TextView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:background="#989898"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Discount" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:background="#989898"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Amount" />
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="end|right"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:text="Total Amount: " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:text="£1500.00" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="end|right"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:text="Total Discount: " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:text="£100.00" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="end|right"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:text="Net Amount: " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start|left"
+                    android:textColor="#656565"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:text="£1400.00" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:orientation="horizontal">
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="#707070"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/_12sdp"
+            android:background="#575757"
+            android:layout_marginRight="@dimen/_1sdp"
+            android:layout_marginEnd="@dimen/_1sdp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:textColor="@color/white"
+            android:text="Ok" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:background="#343434"
+            android:layout_marginRight="@dimen/_1sdp"
+            android:layout_marginEnd="@dimen/_1sdp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:text="Print\nReport" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:background="#575757"
+            android:layout_marginRight="@dimen/_1sdp"
+            android:layout_marginEnd="@dimen/_1sdp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/raleway_semi_bold"
+            android:text="Email\nReport" />
+    </LinearLayout>
+</FrameLayout>

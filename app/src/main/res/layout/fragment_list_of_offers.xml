@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ListOfOffersFragment">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/running_offers"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/_3sdp"
+                    android:textSize="@dimen/_13sdp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:background="#78C729"
+                    android:textColor="@color/white"
+                    android:text="0 Running\nOffers" />
+
+                <TextView
+                    android:id="@+id/expired_offers"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:gravity="center"
+                    android:padding="@dimen/_3sdp"
+                    android:textColor="@color/white"
+                    android:background="#E94929"
+                    android:textSize="@dimen/_13sdp"
+                    android:text="0 Offers Not\nRunning or Expired" />
+                <TextView
+                    android:id="@+id/add_new_offer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:padding="@dimen/_3sdp"
+                    android:background="#E2DF31"
+                    android:textSize="@dimen/_13sdp"
+                    android:text="Add New\nOffer" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/odp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f3f3f3"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/discount_percentage"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:gravity="center"
+                    android:textColor="#656565"
+                    android:textSize="@dimen/_25sdp"
+                    android:text="0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/raleway_bold"
+                    android:gravity="start|left|center_vertical"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                   android:padding="@dimen/_3sdp"
+                    android:textColor="#656565"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="Offers with\nDiscount\nPercentage" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="@dimen/_140sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="#ff6100"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/open_sans_bold"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp"
+                            android:text="Tap to View" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:gravity="center"
+                        android:background="@drawable/circle_two"
+                        android:layout_marginLeft="@dimen/_125sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/discount_two" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout
+               android:id="@+id/oda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f3f3f3"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/discount_amount"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:gravity="center"
+                    android:textColor="#656565"
+                    android:textSize="@dimen/_25sdp"
+                    android:text="0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/raleway_bold"
+                    android:gravity="start|left|center_vertical"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                   android:padding="@dimen/_3sdp"
+                    android:textColor="#656565"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="Offers with\nDiscount\nAmount" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="@dimen/_140sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_marginStart="@dimen/_9sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="#ff8c46"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/open_sans_bold"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp"
+                            android:text="Tap to View" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:gravity="center"
+                        android:background="@drawable/circle_two"
+                        android:layout_marginLeft="@dimen/_130sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/pound_sign" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/combo_offer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f3f3f3"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/combo_meal"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:gravity="center"
+                    android:textColor="#656565"
+                    android:textSize="@dimen/_25sdp"
+                    android:text="0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/raleway_bold"
+                    android:gravity="start|left|center_vertical"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:textColor="#656565"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="Combo\nMeal  \nOffers" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+
+                        android:layout_width="@dimen/_140sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:background="#ffc933"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/open_sans_bold"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/_7sdp"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14sdp"
+                            android:text="Tap to View" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:gravity="center"
+                        android:background="@drawable/circle_two"
+                        android:layout_marginLeft="@dimen/_147sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/fast_food_icon" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="#707070"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="#989898"
+                    android:layout_marginRight="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:textColor="@color/white"
+                    android:text="Offer Title &amp; Type" />
+                <TextView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:background="#989898"
+                    android:layout_marginRight="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Start &amp; End Date" />
+                <TextView
+                    android:layout_width="@dimen/_75sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:background="#989898"
+                    android:layout_marginRight="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Days of\nthe Week" />
+                <TextView
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:gravity="center"
+                    android:background="#989898"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Min Order Amt." />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:background="#989898"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/raleway_semi_bold"
+                    android:text="Actions" />
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/offers_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</FrameLayout>

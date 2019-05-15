@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lexxdigital.easyfoodvone">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".utility.ApplicationContext"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme">
+
+        <receiver android:name="sunmi.ds.MsgReceiver">
+            <intent-filter>
+                <action android:name="com.sunmi.hcservice" />
+                <action android:name="com.sunmi.hcservice.status" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".SplashscreenActivity"
+            android:label="@string/app_name"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.view.impl.LoginActivity"
+            android:theme="@style/NoActionBar"
+             />
+        <activity
+            android:name=".forgot_password.view.impl.ForgotPasswordActivity"
+            android:theme="@style/NoActionBar"
+             />
+        <activity
+            android:name=".contact_support.view.impl.ContactSupportActivity"
+            android:theme="@style/NoActionBar"
+             />
+        <activity
+            android:name=".orders.view.impl.OrdersActivity"
+            android:label="@string/title_activity_orders"
+            android:theme="@style/AppTheme.NoActionBar"
+             />
+        <activity
+            android:name=".single_order_detail.view.impl.SingleOrderDetailActivity"
+            android:label="@string/title_activity_orders"
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.orders.view.impl.OrdersActivity" />
+        </activity>
+        <activity
+            android:name=".TestMainActivity"
+            android:label="@string/title_activity_test_main"
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.orders.view.impl.OrdersActivity" />
+        </activity>
+        <activity
+            android:name=".new_order.view.impl.NewOrderActivity"
+            android:label="@string/title_activity_new_orders"
+            android:parentActivityName=".single_order_detail.view.impl.SingleOrderDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.single_order_detail.view.impl.SingleOrderDetailActivity" />
+        </activity>
+        <activity
+            android:name=".menu.view.impl.MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+
+
+        <service
+            android:name=".firebase.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".firebase.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+
+        <activity
+            android:name=".menu_details.view.impl.MenuDetailsActivity"
+            android:label="@string/title_activity_menu_details"
+            android:parentActivityName=".menu.view.impl.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.menu.view.impl.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".single_order_report_detail.view.impl.OrderRepostDetailActivity"
+            android:label="@string/title_activity_orders"
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.orders.view.impl.OrdersActivity" />
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".spend_x_get_x_discount.view.impl.SpendXgetXdiscountActivity"
+            android:label="@string/title_spend_x_get_discount_x"
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.orders.view.impl.OrdersActivity" />
+        </activity>
+        <activity
+            android:name=".flat_discount_amount_offer.view.impl.FlatDiscountAmountOfferActivity"
+            android:label="@string/title_flat_iscount_mount_ffer"
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.orders.view.impl.OrdersActivity" />
+        </activity>
+        <activity
+            android:name=".discount_offer_with_percentage.view.impl.DiscountOfferWithPercentageActivity"
+            android:label="@string/title_discount_offer_with_percentage"
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.orders.view.impl.OrdersActivity" />
+        </activity>
+        <activity
+            android:name=".create_combo_meals_offer.view.impl.CreateComboMealsOfferActivity"
+            android:label="@string/title_combo_meal_offer"
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lexxdigital.easyfoodvone.orders.view.impl.OrdersActivity" />
+        </activity>
+    </application>
+
+</manifest>

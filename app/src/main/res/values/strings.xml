@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Easy Food</string>
+
+    <!--**********************************Signin Activity************************************-->
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="contact_support">Contact Support</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_your_password">Forgot your password</string>
+    <string name="forgot_text">Enter the email address associated with your account and we\'ll help you for resetting your password.</string>
+    <string name="enter_your_email_address">Enter your email address</string>
+    <string name="text_contact_support">Please tell us your issue and one of our representatives will call you.</string>
+    <string name="type_message">Type your message</string>
+    <string name="title_activity_orders">Orders</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="title_activity_menu_details">Menu Details</string>
+    <string name="title_activity_new_orders">New Order</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_test_main">TestMainActivity</string>
+    <string name="average_time_for_delivery">Average time for delivery:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mpin">Please enter 4 digit pin code\nto view item details</string>
+    <string name="title_spend_x_get_discount_x">Spend X Get X% Discount</string>
+    <string name="title_flat_iscount_mount_ffer">Flat Discount Amount Offer</string>
+    <string name="title_discount_offer_with_percentage">Discount Offer With %</string>
+    <string name="title_combo_meal_offer">Create Combo Meals Offer</string>
+    <string name="view_order">View Order</string>
+    <string name="toast_2">The service has been disconnected</string>
+
+    <string-array name="ratings_arrays">
+        <item>All Star</item>
+        <item>One Star</item>
+        <item>Two Star</item>
+        <item>Three Star</item>
+        <item>Four Star</item>
+        <item>Five Star</item>
+    </string-array>
+
+    <string-array name="profile_arrays">
+        <item>* Select Restaurant Type</item>
+    </string-array>
+
+</resources>
