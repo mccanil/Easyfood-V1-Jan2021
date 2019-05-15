@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-panorama-license:12.0.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-panorama-license-12.0.1.aar/280a7326556065d07675b1c173eff6fe/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-panorama-license-12.0.1.aar/280a7326556065d07675b1c173eff6fe/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-panorama-license-12.0.1.aar/ddbf97acf9cab33d11482119222bcb72/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-panorama-license-12.0.1.aar/ddbf97acf9cab33d11482119222bcb72/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
