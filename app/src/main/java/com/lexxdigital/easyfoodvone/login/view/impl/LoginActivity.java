@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //        edit_username.setText("rahul.saini@lexxdigital.com");
 //        edit_password.setText("R@hul6789");
+
 //        edit_username.setText("raj.dua74@gmail.com");
 //        edit_password.setText("secret");
 
