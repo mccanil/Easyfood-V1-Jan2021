@@ -10,6 +10,7 @@
 
 
     <ImageView
+        android:id="@+id/img.logo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_80sdp"
         android:layout_marginTop="@dimen/_20sdp"
@@ -65,7 +66,7 @@
                         android:background="@drawable/border"
                         android:inputType="textPersonName"
                         android:hint="@string/username"
-                        android:text="rahul.saini@lexxdigital.com" />
+                        android:text="" />
                 </LinearLayout>
                 <TextView
                     android:id="@+id/textView"
@@ -113,7 +114,7 @@
                         android:background="@drawable/border"
                         android:inputType="textPassword"
                         android:hint="@string/password"
-                        android:text="123456" />
+                        android:text="" />
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"

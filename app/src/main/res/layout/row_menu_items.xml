@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lexxdigital.easyfoodvone.menu.adapter.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lexxdigitals.easyfoodvone.menu.adapter.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/row_items"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,4 +41,4 @@
         android:textColor="#3a3534"
         android:fontFamily="@font/raleway_regular"
         android:text="NA" />
-</com.lexxdigital.easyfoodvone.menu.adapter.SquareLayout>
+</com.lexxdigitals.easyfoodvone.menu.adapter.SquareLayout>

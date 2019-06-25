@@ -41,11 +41,11 @@
                 android:layout_marginRight="@dimen/_5sdp"
                 android:background="@drawable/border_six"
                 android:ems="10"
-                android:maxLength="1"
-                android:gravity="center"
                 android:focusable="true"
+                android:gravity="center"
                 android:imeOptions="actionNext"
                 android:inputType="number"
+                android:maxLength="1"
                 android:textColor="@color/bg_login_start"
                 android:textSize="@dimen/_14sdp" />
 
@@ -117,19 +117,6 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#C91EE961"
-                android:gravity="center"
-                android:padding="@dimen/_6sdp"
-                android:text="Ok"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
-
-            <Button
                 android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,6 +127,19 @@
                 android:text="Cancel"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#C91EE961"
+                android:gravity="center"
+                android:padding="@dimen/_6sdp"
+                android:text="Ok"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp" />
         </LinearLayout>
     </LinearLayout>

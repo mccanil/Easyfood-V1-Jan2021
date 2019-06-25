@@ -205,7 +205,7 @@
                         android:textColor="@color/bg_login_start"
                         android:gravity="center"
                         android:background="@drawable/border_six"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:textCursorDrawable="@drawable/cursor_color"/>
 
 
@@ -245,7 +245,7 @@
                         android:textColor="@color/bg_login_start"
                         android:gravity="center"
                         android:background="@drawable/border_six"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:textCursorDrawable="@drawable/cursor_color"/>
 
                 </LinearLayout>
@@ -289,7 +289,7 @@
                         android:textColor="@color/bg_login_start"
                         android:gravity="center"
                         android:background="@drawable/border_six"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:textCursorDrawable="@drawable/cursor_color"/>
 
                 </LinearLayout>

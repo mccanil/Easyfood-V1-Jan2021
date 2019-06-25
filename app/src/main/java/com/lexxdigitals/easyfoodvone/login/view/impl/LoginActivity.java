@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
-       /* findViewById(R.id.img_logo).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.img_logo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (count > 7) {
@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                     count++;
                 }
             }
-        });*/
+        });
 
     }
 

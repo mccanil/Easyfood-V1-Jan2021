@@ -19,8 +19,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_marginTop="@dimen/_5sdp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/_20sdp">
 
@@ -45,16 +45,18 @@
                     android:text="Taste Harmony"
                     android:textColor="#474747"
                     android:textSize="@dimen/_14sdp" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    
+
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_2sdp"
                         android:layout_height="@dimen/_15sdp"
-                        android:src="@drawable/call_answer_icon"/>
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:src="@drawable/call_answer_icon" />
+
                     <TextView
                         android:id="@+id/contact"
                         android:layout_width="match_parent"
@@ -64,9 +66,8 @@
                         android:text="+1234234333"
                         android:textColor="#3D3D3D"
                         android:textSize="@dimen/_13sdp" />
-                    
-                </LinearLayout>
 
+                </LinearLayout>
 
 
                 <TextView
@@ -90,11 +91,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_weight="1"
             android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <LinearLayout
                 android:id="@+id/btn_reject"
@@ -152,14 +153,14 @@
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
         </LinearLayout>
+
         <View
-            android:layout_marginTop="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="#644"/>
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="#644" />
 
     </LinearLayout>
-
 
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -167,16 +168,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
 
             <LinearLayout
-                android:paddingTop="@dimen/_5sdp"
                 android:id="@+id/mainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:paddingTop="@dimen/_5sdp"
                 android:visibility="visible">
 
                 <LinearLayout
@@ -220,8 +223,8 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@color/white"
                     android:gravity="center_vertical"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/_5sdp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -399,11 +402,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_gravity="center|left"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_weight="1"
                         android:fontFamily="@font/raleway_bold"
-                        android:layout_gravity="center|left"
                         android:text="Items"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14sdp" />
@@ -411,88 +414,72 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center|end"
-                        android:fontFamily="@font/raleway_bold"
-                        android:layout_weight="1"
-                        android:text="GBP (£)"
                         android:layout_marginRight="@dimen/_20sdp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_bold"
+                        android:gravity="center|end"
+                        android:text="GBP (£)"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14sdp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
-                    android:paddingRight="@dimen/_15sdp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingRight="@dimen/_15sdp">
 
-                    <TextView
-                        android:id="@+id/quantity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:gravity="start|left"
-                        android:textSize="@dimen/_14sdp"
-                        android:fontFamily="@font/open_sans_semi_bold"
-                        android:textColor="#686868"
-                        android:text="" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/_16sdp"
-                        android:fontFamily="@font/open_sans_semi_bold"
-                        android:textColor="#443f3e"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:gravity="left|start"
-                        android:text="" />
                     <TextView
                         android:id="@+id/name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_10sdp"
-                        android:gravity="start|left"
-                        android:layout_weight="1"
-                        android:maxLines="1"
+                        android:layout_weight="0.6"
                         android:ellipsize="end"
-                        android:textSize="@dimen/_12sdp"
                         android:fontFamily="@font/raleway_semi_bold"
+                        android:gravity="start|left"
+                        android:maxLines="1"
+                        android:text=""
                         android:textColor="#686868"
-                        android:text="" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <TextView
                         android:id="@+id/each"
-                        android:layout_width="@dimen/_60sdp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.2"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_14sdp"
                         android:fontFamily="@font/open_sans_semi_bold"
-                        android:textColor="@color/black"
                         android:gravity="right"
-                        android:text="Each" />
+                        android:text="Each"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
                     <TextView
-                    android:id="@+id/price"
-                    android:layout_width="@dimen/_60sdp"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_14sdp"
-                    android:fontFamily="@font/open_sans_semi_bold"
-                    android:textColor="@color/black"
-                    android:gravity="right"
-                    android:text="Total" />
+                        android:id="@+id/price"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.2"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_semi_bold"
+                        android:gravity="right"
+                        android:text="Total"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="#644"/>
+                    android:background="#666666" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/list_order_details"
-                    android:paddingRight="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white" />
+                    android:background="@color/white"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -523,13 +510,15 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
+
                 <View
-                    android:layout_marginTop="@dimen/_2sdp"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="#333231"/>
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="#666666" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -562,8 +551,6 @@
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
 
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -595,14 +582,15 @@
                         android:textColor="#443f3e"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
+
                 <LinearLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@color/white"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -627,14 +615,14 @@
                         android:textColor="#443f3e"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
-                <View
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:layout_height="@dimen/_1sdp"
-                    android:background="#333231"/>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="#666666" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -667,25 +655,27 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:background="@color/bg_login_start"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|center"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:fontFamily="@font/raleway_bold"
-                    android:text="Notes"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_15sdp" />
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@color/bg_login_start"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Notes"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp" />
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/txt_notes"
                     android:layout_width="wrap_content"
@@ -699,7 +689,6 @@
                     android:text="NA"
                     android:textColor="#686868"
                     android:textSize="@dimen/_12sdp" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -721,7 +710,6 @@
                         android:textSize="@dimen/_14sdp" />
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -772,17 +760,13 @@
 
                 </LinearLayout>
 
-
-
-
                 <ImageView
                     android:id="@+id/image_barcode"
-                    android:visibility="visible"
                     android:layout_width="@dimen/_150sdp"
                     android:layout_height="@dimen/_60sdp"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
-                    />
+                    android:visibility="visible" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -799,11 +783,8 @@
                     android:layout_height="@dimen/_20sdp"
                     android:background="@color/white"
                     android:gravity="center_vertical"
-                    android:orientation="vertical"/>
+                    android:orientation="vertical" />
             </LinearLayout>
-        </ScrollView>
-
+        </android.support.v4.widget.NestedScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
-
-
 </LinearLayout>

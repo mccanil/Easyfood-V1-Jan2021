@@ -1,52 +1,45 @@
 {
   "project_info": {
-    "project_number": "792264433154",
-    "firebase_url": "https://easyfoodv1.firebaseio.com",
-    "project_id": "easyfoodv1",
-    "storage_bucket": "easyfoodv1.appspot.com"
+    "project_number": "791723792585",
+    "firebase_url": "https://easy-food-v1.firebaseio.com",
+    "project_id": "easy-food-v1",
+    "storage_bucket": "easy-food-v1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:792264433154:android:29c00cdca2b98af5",
+        "mobilesdk_app_id": "1:791723792585:android:3eeb85cf0e0cc295",
         "android_client_info": {
-          "package_name": "com.lexxdigital.easyfoodvone"
+          "package_name": "com.lexxdigitals.easyfoodvone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "792264433154-q2dgf2vv3pmnqptee9qgd0nktvoq9qjk.apps.googleusercontent.com",
+          "client_id": "791723792585-p0j4rsv1oijlqla6po5km21hjdp1cdua.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.lexxdigital.easyfoodvone",
-            "certificate_hash": "bbabd4423ba3f48657d7359ae83fb21ee48bb9c6"
+            "package_name": "com.lexxdigitals.easyfoodvone",
+            "certificate_hash": "88d2a5c73dbe2985870e4ebdd0c61f57419213b1"
           }
         },
         {
-          "client_id": "792264433154-ph9s4gvod66dhnermaucmit6jfgldopg.apps.googleusercontent.com",
+          "client_id": "791723792585-1jgl2tqb5lmk19qqip1u5r4u990900fa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCCMOfZf2T8MzWmn1FARZu-4j9e7GTowU8"
+          "current_key": "AIzaSyB1s__EzjwC1eM63yXjmGCQsN3GwxOS4tE"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "792264433154-ph9s4gvod66dhnermaucmit6jfgldopg.apps.googleusercontent.com",
+              "client_id": "791723792585-1jgl2tqb5lmk19qqip1u5r4u990900fa.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SetRestaurantTimingsFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
@@ -18,61 +20,66 @@
             <TextView
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/_10sdp"
-                android:background="@color/bg_login_start"
-                android:layout_marginRight="@dimen/_1sdp"
                 android:layout_marginEnd="@dimen/_1sdp"
-                android:gravity="center"
+                android:layout_marginRight="@dimen/_1sdp"
+                android:background="@color/bg_login_start"
                 android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="center"
+                android:text="Days"
                 android:textColor="@color/white"
-                android:text="Days" />
+                android:textSize="@dimen/_10sdp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/_10sdp"
-                android:textColor="@color/white"
+                android:layout_marginEnd="@dimen/_1sdp"
+                android:layout_marginRight="@dimen/_1sdp"
                 android:layout_weight="1"
                 android:background="@color/bg_login_start"
-                android:layout_marginRight="@dimen/_1sdp"
-                android:layout_marginEnd="@dimen/_1sdp"
-                android:gravity="center"
                 android:fontFamily="@font/raleway_semi_bold"
-                android:text="Opening Time" />
+                android:gravity="center"
+                android:text="Opening Time"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/_10sdp"
-                android:textColor="@color/white"
+                android:layout_marginEnd="@dimen/_1sdp"
+                android:layout_marginRight="@dimen/_1sdp"
                 android:layout_weight="1"
                 android:background="@color/bg_login_start"
-                android:layout_marginRight="@dimen/_1sdp"
-                android:layout_marginEnd="@dimen/_1sdp"
-                android:gravity="center"
                 android:fontFamily="@font/raleway_semi_bold"
-                android:text="Collection Time" />
+                android:gravity="center"
+                android:text="Collection Time"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/_1sdp"
                 android:layout_marginEnd="@dimen/_1sdp"
-                android:gravity="center"
+                android:layout_marginRight="@dimen/_1sdp"
+                android:layout_weight="1"
                 android:background="@color/bg_login_start"
-                android:textColor="@color/white"
                 android:fontFamily="@font/raleway_semi_bold"
-                android:text="Delivery Time" />
+                android:gravity="center"
+                android:text="Delivery Time"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/_10sdp"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:background="@color/bg_login_start"
-                android:textColor="@color/white"
                 android:fontFamily="@font/raleway_semi_bold"
-                android:text="Action" />
+                android:gravity="center"
+                android:text="Action"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp" />
         </LinearLayout>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_timings"
             android:layout_width="match_parent"

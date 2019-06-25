@@ -4,8 +4,8 @@
     android:id="@+id/layout_row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_4sdp"
     android:layout_marginLeft="@dimen/_4sdp"
+    android:layout_marginTop="@dimen/_4sdp"
     android:layout_marginRight="@dimen/_4sdp"
     app:cardElevation="5dp">
 
@@ -22,17 +22,19 @@
             android:layout_marginTop="@dimen/_2sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/newOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="New Order!"
                 android:layout_marginRight="@dimen/_5sdp"
                 android:gravity="center"
+                android:text="New Order!"
+                android:textColor="@color/bg_login_center"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
-                android:visibility="gone"
-                android:textColor="@color/bg_login_center"/>
+                android:visibility="gone" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,26 +44,61 @@
                 <TextView
                     android:id="@+id/customer_name"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_weight="1"
                     android:fontFamily="@font/raleway_bold"
                     android:text="NA"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13sdp" />
-                <TextView
-                    android:id="@+id/statusText"
+
+                <!--<TextView
+                   android:id="@+id/statusText"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight=".3"
+                   android:paddingRight="@dimen/_5sdp"
+                   android:gravity="right"
+                   android:fontFamily="@font/open_sans_regular"
+                   android:text="Status"
+
+                   android:textColor="@color/black"
+                   android:textSize="@dimen/_12sdp" />-->
+
+
+                <FrameLayout
+                    android:id="@+id/layout.orderStatus"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".3"
-                    android:paddingRight="@dimen/_5sdp"
-                    android:gravity="right"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:text="Status"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
-            </LinearLayout>
+                    android:layout_weight=".5"
+                    android:orientation="horizontal"
+                    android:paddingRight="@dimen/_5sdp">
 
+                    <!-- Text Label -->
+                    <TextView
+                        android:id="@+id/statusText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Status"
+                        android:drawableRight="@drawable/drop_down_arrow"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+                    <!-- Spinner Element -->
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0"
+                        android:gravity="end"
+
+
+                        />
+                </FrameLayout>
+
+
+            </LinearLayout>
 
 
             <LinearLayout
@@ -104,10 +141,10 @@
                     android:layout_weight=".4"
                     android:fontFamily="@font/open_sans_regular"
                     android:gravity="right"
-                    android:textStyle="bold"
                     android:paddingRight="@dimen/_5sdp"
                     android:text="Preparing"
-                    android:textColor="@color/bg_login_center" />
+                    android:textColor="@color/bg_login_center"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -143,8 +180,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:maxLines="1"
                         android:fontFamily="@font/open_sans_regular"
+                        android:maxLines="1"
                         android:text="NA"
                         android:textColor="@color/txt_orderid"
                         android:textSize="@dimen/_10sdp" />
@@ -227,6 +264,7 @@
                 android:background="@color/borders_bg" />
 
             <LinearLayout
+                android:id="@+id/layout_address"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -250,7 +288,6 @@
             </LinearLayout>
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -261,10 +298,10 @@
 
                 <TextView
                     android:id="@+id/accept"
-                    android:background="#4066F633"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#4066F633"
                     android:drawableLeft="@drawable/accept"
                     android:drawablePadding="@dimen/_2sdp"
                     android:fontFamily="@font/open_sans_bold"
@@ -275,13 +312,12 @@
                     android:textSize="@dimen/_13sdp" />
 
 
-
                 <TextView
-                    android:background="#31EE0A0A"
                     android:id="@+id/declined"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#31EE0A0A"
                     android:drawableLeft="@drawable/declined"
                     android:drawablePadding="@dimen/_2sdp"
                     android:fontFamily="@font/open_sans_bold"
@@ -292,11 +328,11 @@
                     android:textSize="@dimen/_13sdp" />
 
                 <TextView
-                    android:background="#31797777"
                     android:id="@+id/viewDetail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#31797777"
                     android:drawablePadding="@dimen/_2sdp"
                     android:fontFamily="@font/open_sans_bold"
                     android:gravity="center"

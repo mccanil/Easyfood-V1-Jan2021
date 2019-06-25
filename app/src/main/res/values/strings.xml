@@ -2,6 +2,7 @@
     <string name="app_name">Easy Food</string>
 
     <!--**********************************Signin Activity************************************-->
+    <string name="currency">\u00a3</string>
 
     <string name="username">Username</string>
     <string name="password">Password</string>
