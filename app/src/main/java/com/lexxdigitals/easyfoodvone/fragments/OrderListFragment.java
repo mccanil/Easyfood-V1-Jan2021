@@ -396,7 +396,10 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
 
         //2019-06-15 13:54:56
         ProgressBar progressBar = mDialogView.findViewById(R.id.progressBar);
+
+        //2019-07-30 09:11:08
         getRestaurantClosingTimeByDate(progressBar, orderDetail.getRestaurant_id(), orderDetail.getDelivery_date_time());
+       // getRestaurantClosingTimeByDate(progressBar, orderDetail.getRestaurant_id(), orderDetail.getDelivery_date_time());
 
 //        txtResult.setText(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "mm"));
         txtResult.setText("0");

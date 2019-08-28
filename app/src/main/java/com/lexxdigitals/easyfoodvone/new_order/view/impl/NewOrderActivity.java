@@ -27,12 +27,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.lexxdigitals.easyfoodvone.R;
 import com.lexxdigitals.easyfoodvone.adapters.menu_product.MenuItemListAdapter;
 import com.lexxdigitals.easyfoodvone.api_handler.ApiClient;
 import com.lexxdigitals.easyfoodvone.api_handler.ApiInterface;
+import com.lexxdigitals.easyfoodvone.helper.ConnectToWeb;
 import com.lexxdigitals.easyfoodvone.helper.PrintEsayFood;
 import com.lexxdigitals.easyfoodvone.helper.RecyclerLayoutManager;
 import com.lexxdigitals.easyfoodvone.login.models.LoginResponse;
@@ -51,8 +53,16 @@ import com.lexxdigitals.easyfoodvone.utility.LoadingDialog;
 import com.lexxdigitals.easyfoodvone.utility.UserPreferences;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -214,6 +224,18 @@ public class NewOrderActivity extends AppCompatActivity implements Constants.Dia
                 new IntentFilter(Constants.NOTIFICATION_TYPE_ACCEPTED));
     }
 
+
+    private String capitalize(String capString) {
+        StringBuffer capBuffer = new StringBuffer();
+        Matcher capMatcher = Pattern.compile("([a-z])([a-z]*)", Pattern.CASE_INSENSITIVE).matcher(capString);
+        while (capMatcher.find()) {
+            capMatcher.appendReplacement(capBuffer, capMatcher.group(1).toUpperCase() + capMatcher.group(2).toLowerCase());
+        }
+
+        return capMatcher.appendTail(capBuffer).toString();
+    }
+
+
     private void setRestaurantDetails() {
         restaurant_name.setText(Constants.getStoredData(NewOrderActivity.this).getRestaurant_name());
         contact.setText(Constants.getStoredData(NewOrderActivity.this).getLandline_number());
@@ -229,6 +251,30 @@ public class NewOrderActivity extends AppCompatActivity implements Constants.Dia
         LocalBroadcastManager.getInstance(NewOrderActivity.this).unregisterReceiver(mRegistrationBroadcastReceiver);
     }
 
+
+    private String formatDate(String inputDate) {
+
+      /*  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        Date date = dateFormat.parse(dealInfo.getDealStartDate());//You will get date object relative to server/client timezone wherever it is parsed
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");*/
+
+
+        String outputDate = null;
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy HH:mm");
+        Date date = null;
+        try {
+            date = inputFormat.parse(inputDate);
+            outputDate = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        return outputDate;
+    }
+
+
     private void setData(OrdersDetailsTop orderDetail) {
 
         txtOrderId.setText(orderDetail.getOrder_num());
@@ -236,13 +282,17 @@ public class NewOrderActivity extends AppCompatActivity implements Constants.Dia
         txtTotalAmountPaid.setText(Constants.POUND + orderDetail.getOrder_total());
         txtContact.setText(orderDetail.getDeliveryDetails().getPhone_number());
         txtName.setText(orderDetail.getDeliveryDetails().getCustomer_name());
-        txtOrderDate.setText(orderDetail.getOrder_date_time());
-        txtDeliveryOption.setText(orderDetail.getDelivery_option());
-        txtDeleveryDate.setText(orderDetail.getDelivery_date_time());
+        txtOrderDate.setText(formatDate(orderDetail.getOrder_date_time()));
+        txtDeliveryOption.setText(capitalize(orderDetail.getDelivery_option()));
+
+    /*    11 Jul 2019 07:33:50
+        txtDeleveryDate.setText(orderDetail.getDelivery_date_time());*/
+
+        txtDeleveryDate.setText(formatDate(orderDetail.getDelivery_date_time()));
         txtTotalAmountPaid.setText(Constants.POUND + orderDetail.getOrder_total());
         txtPaymentMethod.setText(orderDetail.getPayment_mode());
         txtOrderId.setText(orderDetail.getOrder_num());
-        txtOrderDate.setText(orderDetail.getOrder_date_time());
+    //    txtOrderDate.setText(orderDetail.getOrder_date_time());
         txtDeleveryCharges.setText(Constants.POUND + orderDetail.getDelivery_charge());
         txtSubTotal.setText(Constants.POUND + orderDetail.getSub_total());
         txtDiscount.setText(Constants.POUND + orderDetail.getDiscount_amount());
@@ -505,6 +555,89 @@ public class NewOrderActivity extends AppCompatActivity implements Constants.Dia
 
     }
 
+
+    private void orderDetailsNeww(String ordersNumber) {
+        String url = "http://35.177.163.219/mcc-easyfood-backend/public/api/v1_app/v1/order_details_new";
+        HashMap<String, String> postParams = new HashMap<>();
+        postParams.put("order_number", ordersNumber);
+        OrderDetailsRequest request = new OrderDetailsRequest();
+        request.setOrder_number(ordersNumber);
+        new ConnectToWeb(this).postRequest("", url, postParams, new ConnectToWeb.ResponseListener() {
+            @Override
+            public void onResponse(String tag, String response) {
+                Gson gson = new Gson();
+                OrdersDetailsResponseNew data = gson.fromJson(response, OrdersDetailsResponseNew.class);
+
+                orderDetailsResponse = data.getOrdersDetails();
+                mainLayout.setVisibility(View.VISIBLE);
+
+                btnAccept.setEnabled(true);
+                btnReject.setEnabled(true);
+                swipeRefresh.setRefreshing(false);
+                // dialog.dismiss();
+                Log.e("Order details ", data.toString());
+                setData(data.getOrdersDetails());
+
+                mAdapter.clearData();
+                List<AllTypeMenuItemModel> menuProducts = new ArrayList<>();
+                if (data.getOrdersDetails().getCart().getMenu().getMenuCategory() != null && data.getOrdersDetails().getCart().getMenu().getMenuCategory().size() > 0) {
+                    for (int i = 0; i < data.getOrdersDetails().getCart().getMenu().getMenuCategory().size(); i++) {
+                        for (int j = 0; j < data.getOrdersDetails().getCart().getMenu().getMenuCategory().get(i).getMenuProducts().size(); j++) {
+                            AllTypeMenuItemModel allTypeMenuItemModel = new AllTypeMenuItemModel(data.getOrdersDetails().getCart().getMenu().getMenuCategory().get(i).getMenuProducts().get(j), null, null, MenuItemListAdapter.MENU_CATEGORY_ITEM_VIEW_TYPE);
+                            menuProducts.add(allTypeMenuItemModel);
+                        }
+                        for (int j = 0; j < data.getOrdersDetails().getCart().getMenu().getMenuCategory().get(i).getMenuSubCategory().size(); j++) {
+                            for (int k = 0; k < data.getOrdersDetails().getCart().getMenu().getMenuCategory().get(i).getMenuSubCategory().get(j).getMenuProducts().size(); k++) {
+                                AllTypeMenuItemModel allTypeMenuItemModel = new AllTypeMenuItemModel(data.getOrdersDetails().getCart().getMenu().getMenuCategory().get(i).getMenuSubCategory().get(j).getMenuProducts().get(k), null, null, MenuItemListAdapter.MENU_CATEGORY_ITEM_VIEW_TYPE);
+                                menuProducts.add(allTypeMenuItemModel);
+                            }
+                        }
+                    }
+                }
+
+                if (data.getOrdersDetails().
+
+                        getCart().
+
+                        getMenu().
+
+                        getSpecialOffers() != null) {
+                    for (SpecialOffer specialOffers : data.getOrdersDetails().getCart().getMenu().getSpecialOffers()) {
+                        AllTypeMenuItemModel allTypeMenuItemModel = new AllTypeMenuItemModel(null, specialOffers, null, MenuItemListAdapter.SPECIAL_OFFER_ITEM_VIEW_TYPE);
+                        menuProducts.add(allTypeMenuItemModel);
+                    }
+                }
+
+                if (data.getOrdersDetails().
+
+                        getCart().
+
+                        getMenu().
+
+                        getUpSellProducts() != null) {
+                    for (UpSells upSells : data.getOrdersDetails().getCart().getMenu().getUpSellProducts()) {
+                        AllTypeMenuItemModel allTypeMenuItemModel = new AllTypeMenuItemModel(null, null, upSells, MenuItemListAdapter.UP_SELLS_ITEM_VIEW_TYPE);
+                        menuProducts.add(allTypeMenuItemModel);
+                    }
+                }
+                mAdapter.addItem(menuProducts);
+            }
+        }, new ConnectToWeb.ErrorListener() {
+            @Override
+            public void onError(String tag, String errorMsg) {
+                btnAccept.setEnabled(false);
+                btnReject.setEnabled(false);
+                mainLayout.setVisibility(View.INVISIBLE);
+
+                swipeRefresh.setRefreshing(false);
+
+                Toast.makeText(NewOrderActivity.this, "Loading failed Swipe down to try again!", Toast.LENGTH_LONG).show();
+                Log.e("onError", "onError: " + errorMsg);
+            }
+        });
+    }
+
+
     private void orderDetailsNew(String ordersNumber) {
         final LoadingDialog dialog = new LoadingDialog(NewOrderActivity.this, "Loading details...");
         dialog.setCancelable(false);
@@ -577,7 +710,7 @@ public class NewOrderActivity extends AppCompatActivity implements Constants.Dia
                         }
 
                         @Override
-                        public void onError(Throwable e) {
+                        public void onError(Throwable exe) {
                             btnAccept.setEnabled(false);
                             btnReject.setEnabled(false);
                             mainLayout.setVisibility(View.INVISIBLE);
@@ -585,7 +718,7 @@ public class NewOrderActivity extends AppCompatActivity implements Constants.Dia
                             swipeRefresh.setRefreshing(false);
 
                             Toast.makeText(NewOrderActivity.this, "Loading failed Swipe down to try again!", Toast.LENGTH_LONG).show();
-                            Log.e("onError", "onError: " + e.getMessage());
+                            Log.e("onError", "onError: " + exe.getMessage());
                         }
                     }));
 

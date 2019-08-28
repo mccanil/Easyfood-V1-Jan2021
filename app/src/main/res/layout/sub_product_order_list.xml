@@ -3,6 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,16 +16,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            android:ellipsize="end"
+
             android:fontFamily="@font/raleway_semi_bold"
             android:gravity="start|left"
-            android:maxLines="1"
-            android:text=""
-            android:textColor="#686868"/>
+
+            android:textColor="#686868" />
 
         <TextView
             android:id="@+id/tv.priceEach"
             android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
             android:fontFamily="@font/open_sans_semi_bold"
@@ -35,6 +36,7 @@
         <TextView
             android:id="@+id/sub_prod_price"
             android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
             android:fontFamily="@font/open_sans_semi_bold"

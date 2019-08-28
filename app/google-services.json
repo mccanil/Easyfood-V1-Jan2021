@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "791723792585-9r687q0cere1k1hbtmvl3q3q7ffer9d0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lexxdigitals.easyfoodvone",
+            "certificate_hash": "1a65756a1e651e82554f9e2dd6831e95718d343b"
+          }
+        },
+        {
           "client_id": "791723792585-p0j4rsv1oijlqla6po5km21hjdp1cdua.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -253,10 +253,15 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
         holder.customer_name.setText(ordersListResponse.get(position).getCustomer_name() + " (" + prevOrder + ")");
         holder.order_amount.setText(Constants.POUND + ordersListResponse.get(position).getOrder_total());
         holder.order_number.setText((ordersListResponse.get(position).getOrder_num().substring(ordersListResponse.get(position).getOrder_num().length() - 8)).replace("-", ""));
-        if (ordersListResponse.get(position).getIs_preorder().equals(""))
-            holder.payment_type.setText(ordersListResponse.get(position).getPayment_mode() + "-" + ordersListResponse.get(position).getDelivery_option().substring(0, 3));
-        else
-            holder.payment_type.setText(ordersListResponse.get(position).getPayment_mode() + "-PRE-" + ordersListResponse.get(position).getDelivery_option().substring(0, 3));
+
+        if (!ordersListResponse.get(position).getDelivery_option().isEmpty() && ordersListResponse.get(position).getDelivery_option().trim().length() > 3 && !ordersListResponse.get(position).getDelivery_option().trim().equals("0")) {
+
+            if (ordersListResponse.get(position).getIs_preorder().equals(""))
+                holder.payment_type.setText(ordersListResponse.get(position).getPayment_mode() + "-" + ordersListResponse.get(position).getDelivery_option().substring(0, 3));
+            else
+                holder.payment_type.setText(ordersListResponse.get(position).getPayment_mode() + "-PRE-" + ordersListResponse.get(position).getDelivery_option().substring(0, 3));
+
+        }
         holder.orderDate.setText(ordersListResponse.get(position).getOrder_date_time());
 
 
@@ -283,7 +288,9 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
 
     @Override
     public int getItemCount() {
-        return ordersListResponse.size();
+
+        return ordersListResponse == null ? 0 : ordersListResponse.size();
+        // return ordersListResponse.size();
     }
 
 }
