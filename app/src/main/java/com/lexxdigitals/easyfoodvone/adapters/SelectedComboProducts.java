@@ -52,8 +52,6 @@ public class SelectedComboProducts extends RecyclerView.Adapter<SelectedComboPro
 
 
         holder.product.setOnCheckedChangeListener(null);
-
-        //if true, your checkbox will be selected, else unselected
         holder.product.setChecked(productsList.get(position).getChecked());
         holder.product.setOnClickListener(new View.OnClickListener() {
             @Override

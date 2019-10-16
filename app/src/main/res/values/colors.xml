@@ -31,4 +31,7 @@
     <color name="inactive_category_count">#D5CECD</color>
     <color name="grey_bg">#BED6D6D6</color>
     <color name="bg_new_order">#fbf3ee</color>
+
+    <color name="start_color">#FFFFFF</color>
+    <color name="end_color">#fbf3ee</color>
 </resources>

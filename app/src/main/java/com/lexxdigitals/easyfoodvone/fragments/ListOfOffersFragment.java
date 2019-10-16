@@ -44,8 +44,6 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class ListOfOffersFragment extends Fragment implements AdapterOfferList.OnActionButtonClick {
-
-
     Unbinder unbinder;
     @BindView(R.id.running_offers)
     TextView runningOffers;
@@ -61,10 +59,6 @@ public class ListOfOffersFragment extends Fragment implements AdapterOfferList.O
     TextView comboMeal;
     LinearLayout combo_offer, odp, oda;
     AdapterOfferList mAdapter;
-
-    List<OffersResponse> offersLists;
-    String offer_type[] = new String[]{"discount_percentage", "combo_offer", "flat_offer"};
-    String filter[] = new String[]{"running", "expired"};
 
     private Context mContext;
     private Activity mActivity;
@@ -93,14 +87,11 @@ public class ListOfOffersFragment extends Fragment implements AdapterOfferList.O
         combo_offer = view.findViewById(R.id.combo_offer);
         offersList = view.findViewById(R.id.offers_list);
         offersList.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         oda = view.findViewById(R.id.oda);
         odp = view.findViewById(R.id.odp);
-
         unbinder = ButterKnife.bind(this, view);
         clickEvents();
         getOffers("", "");
-
         return view;
     }
 
@@ -109,9 +100,7 @@ public class ListOfOffersFragment extends Fragment implements AdapterOfferList.O
         runningOffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 getOffers("running", "");
-
             }
         });
         expiredOffers.setOnClickListener(new View.OnClickListener() {
@@ -135,14 +124,13 @@ public class ListOfOffersFragment extends Fragment implements AdapterOfferList.O
         oda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-getOffers("","flat_offer");
+                getOffers("", "flat_offer");
             }
         });
         combo_offer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                getOffers("","combo_offer");
+                getOffers("", "combo_offer");
             }
         });
     }
@@ -169,7 +157,7 @@ getOffers("","flat_offer");
                 mDialog.dismiss();
                 Intent i = new Intent(mContext, SpendXgetXdiscountActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                ((OrdersActivity)getActivity()).startActivity(i);
+                ((OrdersActivity) getActivity()).startActivity(i);
                 mActivity.overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
@@ -179,7 +167,7 @@ getOffers("","flat_offer");
                 //your business logic
                 mDialog.dismiss();
                 Intent i = new Intent(mContext, FlatDiscountAmountOfferActivity.class);
-                ((OrdersActivity)getActivity()).startActivity(i);
+                ((OrdersActivity) getActivity()).startActivity(i);
                 mActivity.overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
@@ -189,7 +177,7 @@ getOffers("","flat_offer");
                 //your business logic
                 mDialog.dismiss();
                 Intent i = new Intent(mContext, DiscountOfferWithPercentageActivity.class);
-                ((OrdersActivity)getActivity()).startActivity(i);
+                ((OrdersActivity) getActivity()).startActivity(i);
                 mActivity.overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
@@ -199,7 +187,7 @@ getOffers("","flat_offer");
                 //your business logic
                 mDialog.dismiss();
                 Intent i = new Intent(mContext, CreateComboMealsOfferActivity.class);
-                ((OrdersActivity)getActivity()).startActivity(i);
+                ((OrdersActivity) getActivity()).startActivity(i);
                 mActivity.overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
@@ -214,7 +202,6 @@ getOffers("","flat_offer");
 
                 break;
             case 2:
-
                 LayoutInflater factory = LayoutInflater.from(getActivity());
                 final View mDialogView = factory.inflate(R.layout.conf_deialog, null);
                 final AlertDialog mDialog = new AlertDialog.Builder(getActivity()).create();
@@ -248,18 +235,17 @@ getOffers("","flat_offer");
     private void getOffers(String filter, String offerType) {
         final LoadingDialog dialog;
         if (filter.equals("running") && offerType.equals(""))
-            dialog = new LoadingDialog(getActivity(),"Loading running offers");
+            dialog = new LoadingDialog(getActivity(), "Loading running offers");
         else if (filter.equals("expired") && offerType.equals(""))
-            dialog = new LoadingDialog(getActivity(),"Loading expired offers");
+            dialog = new LoadingDialog(getActivity(), "Loading expired offers");
         else if (filter.equals("") && offerType.equals("discount_percentage"))
-            dialog = new LoadingDialog(getActivity(),"Loading discount with percentage offers");
+            dialog = new LoadingDialog(getActivity(), "Loading discount with percentage offers");
         else if (filter.equals("") && offerType.equals("flat_offer"))
-            dialog = new LoadingDialog(getActivity(),"Loading discount with amount offers");
+            dialog = new LoadingDialog(getActivity(), "Loading discount with amount offers");
         else if (filter.equals("") && offerType.equals("combo_offer"))
-            dialog = new LoadingDialog(getActivity(),"Loading combo offers");
+            dialog = new LoadingDialog(getActivity(), "Loading combo offers");
         else
-            dialog = new LoadingDialog(getActivity(),"Loading offers");
-
+            dialog = new LoadingDialog(getActivity(), "Loading offers");
 
         dialog.setCancelable(false);
         dialog.show();
@@ -326,7 +312,7 @@ getOffers("","flat_offer");
 
                             mAdapter.remove(position);
                             Toast.makeText(getActivity(), "Offer deleted", Toast.LENGTH_LONG).show();
-                            getOffers("","");
+                            getOffers("", "");
                         }
 
                         @Override
@@ -346,6 +332,6 @@ getOffers("","flat_offer");
     @Override
     public void onResume() {
         super.onResume();
-        getOffers("","");
+        getOffers("", "");
     }
 }

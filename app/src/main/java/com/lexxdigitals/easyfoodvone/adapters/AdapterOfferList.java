@@ -65,13 +65,6 @@ public class AdapterOfferList extends RecyclerView.Adapter<AdapterOfferList.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        /*holder.btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onActionButtonClick.onActionButtonClicked(1, position, holder, offersLists.get(position));
-
-            }
-        });*/
         holder.del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

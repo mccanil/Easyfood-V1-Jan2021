@@ -47,8 +47,6 @@ public class MenuProductSelectorAdapter extends RecyclerView.Adapter<MenuProduct
         this.holder = holder;
         adapter = new SubProductsAdapter(context, productsList.get(position).getProduct_sizes(), holder, position);
         holder.product.setOnCheckedChangeListener(null);
-
-        //if true, your checkbox will be selected, else unselected
         holder.product.setChecked(productsList.get(position).getChecked());
         holder.product.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,22 +138,12 @@ public class MenuProductSelectorAdapter extends RecyclerView.Adapter<MenuProduct
     }
 
 
-    public void clearAdapter() {
-        productsList.clear();
-        productsKeys.clear();
-        if (adapter!=null){
-        adapter.notifyDataSetChanged();
-        notifyDataSetChanged();}
-    }
-
-
 //TODO: Sub Product Adapter
 
 
     public class SubProductsAdapter extends RecyclerView.Adapter<SubProductsAdapter.SubProductsView> {
         Context context;
         List<MenuProducts.Data.SubProducts> subProductsList;
-        OnChildChckBoxChecked onChildChckBoxChecked;
         MainProductsView pholder;
         int position;
 
@@ -199,7 +187,6 @@ public class MenuProductSelectorAdapter extends RecyclerView.Adapter<MenuProduct
                                 selectedProductsList.remove(productsList.remove(position));
                             }
                         }
-                        //set your object's last status.
 
                     }
                 });
@@ -210,22 +197,6 @@ public class MenuProductSelectorAdapter extends RecyclerView.Adapter<MenuProduct
 
         }
 
-        public String getSelectedItemsIds(int position) {
-            String ids = "";
-
-            for (int i = 0; i < subProductsList.size(); i++) {
-
-                if (subProductsList.get(position).getChecked()) {
-                    if (ids.equalsIgnoreCase("")) {
-                        ids = productsList.get(i).getProduct_sizes().get(i).getSize_id();
-                    } else {
-                        ids = ids + "," + productsList.get(i).getProduct_sizes().get(i).getSize_id();
-                    }
-                }
-            }
-
-            return ids;
-        }
 
         @Override
         public int getItemCount() {
@@ -243,11 +214,6 @@ public class MenuProductSelectorAdapter extends RecyclerView.Adapter<MenuProduct
             }
         }
 
-        public void refreshAdapter(List<MenuProducts.Data.SubProducts> newData) {
-            subProductsList.clear();
-            subProductsList = newData;
-            this.notifyDataSetChanged();
-        }
 
     }
 

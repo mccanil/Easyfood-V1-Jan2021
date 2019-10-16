@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created by Omnisttechhub Solution-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".charity.SucessActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="@dimen/_110sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_logo_new" />
+
+
+                <ImageView
+                    android:id="@+id/iv_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_below="@+id/iv_logo"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/banner_one" />
+
+                <TextView
+                    android:id="@+id/tv_thank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:gravity="center_horizontal"
+                    android:text="@string/thank_you"
+                    android:textColor="@color/bg_login_center"
+                    android:textSize="@dimen/_16sdp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_surity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:gravity="center_horizontal"
+
+                    android:textColor="@color/txt_grey_two"
+                    android:textSize="@dimen/_16sdp" />
+
+                <TextView
+                    android:id="@+id/tv_sucess_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="@dimen/_4sdp"
+
+                    android:textColor="@color/txt_grey_two"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:elevation="0dp"
+                    app:cardBackgroundColor="@color/bg_login_center"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_toEndOf="@+id/tv_u_have"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/raleway_bold"
+                        android:paddingStart="@dimen/_45sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_45sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/ok"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+
+
+</layout>

@@ -22,25 +22,22 @@ import java.util.Collections;
 import java.util.List;
 
 
-
 public class DragAndDropGridAdapter extends RecyclerView.Adapter<DragAndDropGridAdapter.ItemViewHolder>
-        implements ItemTouchHelperAdapter
-{
+        implements ItemTouchHelperAdapter {
 
     private static Context mContext;
     List<MenuCategoryList.MenuCategories> menuCategories;
     OnItemPositionChanged onItemPositionChanged;
 
-    public interface OnItemPositionChanged
-    {
-        void onItemPositionChanged(int currentPosition,int previousPosition,MenuCategoryList.MenuCategories menuCategories);
+    public interface OnItemPositionChanged {
+        void onItemPositionChanged(int currentPosition, int previousPosition, MenuCategoryList.MenuCategories menuCategories);
     }
 
 
-    public DragAndDropGridAdapter(Context context ,OnItemPositionChanged onItemPositionChanged, List<MenuCategoryList.MenuCategories> menuCategories) {
+    public DragAndDropGridAdapter(Context context, OnItemPositionChanged onItemPositionChanged, List<MenuCategoryList.MenuCategories> menuCategories) {
         this.mContext = context;
         this.menuCategories = menuCategories;
-        this.onItemPositionChanged =onItemPositionChanged;
+        this.onItemPositionChanged = onItemPositionChanged;
     }
 
     @Override
@@ -57,13 +54,13 @@ public class DragAndDropGridAdapter extends RecyclerView.Adapter<DragAndDropGrid
                 .placeholder(R.drawable.restaurant_icon).error(R.drawable.restaurant_icon).into(holder.thumbnail);
 
         holder.mTitle.setText(menuCategories.get(position).getMenu_category_name());
-        holder.txt_items.setText(menuCategories.get(position).getNumber_of_menu_product()+" items");
+        holder.txt_items.setText(menuCategories.get(position).getNumber_of_menu_product() + " items");
 
         holder.rowItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(mContext,MenuDetailsActivity.class);
-                i.putExtra("menu",(Serializable)menuCategories.get(position));
+                Intent i = new Intent(mContext, MenuDetailsActivity.class);
+                i.putExtra("menu", (Serializable) menuCategories.get(position));
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(i);
             }
@@ -79,10 +76,8 @@ public class DragAndDropGridAdapter extends RecyclerView.Adapter<DragAndDropGrid
     }
 
     @Override
-    public boolean onItemMove(int fromPosition, int toPosition)
-    {
+    public boolean onItemMove(int fromPosition, int toPosition) {
         Collections.swap(menuCategories, fromPosition, toPosition);
-       // onItemPositionChanged.onItemPositionChanged(toPosition,fromPosition,menuCategories.get(fromPosition));
         notifyItemMoved(fromPosition, toPosition);
 
         return true;
@@ -98,7 +93,7 @@ public class DragAndDropGridAdapter extends RecyclerView.Adapter<DragAndDropGrid
             ItemTouchHelperViewHolder {
 
         public ImageView thumbnail;
-        public TextView mTitle,txt_items;
+        public TextView mTitle, txt_items;
         public SquareLayout rowItems;
 
         public ItemViewHolder(View itemView) {
@@ -111,12 +106,12 @@ public class DragAndDropGridAdapter extends RecyclerView.Adapter<DragAndDropGrid
 
         @Override
         public void onItemSelected() {
-            itemView.setBackgroundColor(mContext.getResources().getColor( R.color.item_bg_on_select));
+            itemView.setBackgroundColor(mContext.getResources().getColor(R.color.item_bg_on_select));
         }
 
         @Override
         public void onItemClear() {
-            itemView.setBackgroundColor(mContext.getResources().getColor( R.color.white));
+            itemView.setBackgroundColor(mContext.getResources().getColor(R.color.white));
         }
     }
 }

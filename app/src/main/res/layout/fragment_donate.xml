@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".charity.DonateFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/iv_logo">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/iv_logo"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/iv_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/banner_six" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:text="@string/book_a_charity_collection"
+                    android:textColor="@color/txt_grey_two"
+                    android:textSize="@dimen/_16sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text="@string/how_many_meals_like_to_donate"
+                    android:textColor="@color/txt_grey_two"
+                    android:textSize="@dimen/_10sdp" />
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:background="@drawable/wired_orange_rect"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp">
+
+                    <EditText
+                        android:id="@+id/et_no_of_meals"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fontFamily="@font/open_sans_semi_bold"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/enter_no_meal"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:textColor="@color/bg_login_center"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <TextView
+                        android:id="@+id/tv_meal_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/et_no_of_meals"
+                        android:fontFamily="@font/open_sans_semi_bold"
+                        android:text="@string/meals"
+                        android:textColor="@color/bg_login_center"
+                        android:textSize="@dimen/_14sdp"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text="@string/when_will_meal_be_ready_to_collect"
+                    android:textColor="@color/txt_grey_two"
+                    android:textSize="@dimen/_10sdp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:padding="@dimen/_5sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:gravity="center_horizontal"
+                    android:text="@string/please_allow_plenty_of_time_for_local_to_reach"
+                    android:textColor="@color/txt_grey_two"
+                    android:textSize="@dimen/_10sdp" />
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_donate_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rl_you_have"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_25sdp"
+                    app:cardBackgroundColor="@color/bg_login_center"
+                    app:cardCornerRadius="@dimen/_4sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_toEndOf="@+id/tv_u_have"
+                        android:fontFamily="@font/raleway_bold"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_15sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/donate_now"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp" />
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
+
+
+</layout>

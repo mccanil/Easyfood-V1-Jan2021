@@ -18,9 +18,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+
+            android:layout_marginRight="@dimen/_5sdp"
             android:orientation="vertical">
 
             <TextView
@@ -79,10 +80,10 @@
                         android:id="@+id/statusText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:text="Status"
                         android:drawableRight="@drawable/drop_down_arrow"
+                        android:fontFamily="@font/open_sans_regular"
                         android:padding="5dp"
+                        android:text="Status"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
                     <!-- Spinner Element -->
@@ -101,52 +102,56 @@
             </LinearLayout>
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/_1sdp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                <!--  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/_1sdp"
+                      android:layout_toStartOf="@+id/status"
+                      android:orientation="horizontal">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:text="Order Date :"
-                        android:textSize="@dimen/_10sdp" />
+                <TextView
+                    android:id="@+id/tv_order_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:text="Order Date :"
+                    android:textSize="@dimen/_9sdp" />
 
-                    <TextView
-                        android:id="@+id/orderDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/open_sans_regular"
-                        android:paddingRight="@dimen/_10sdp"
-                        android:text="NA"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_10sdp" />
+                <TextView
+                    android:id="@+id/orderDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/status"
+                    android:layout_toEndOf="@+id/tv_order_label"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:paddingRight="@dimen/_1sdp"
+                    android:paddingEnd="@dimen/_1sdp"
+                    android:text="NA"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_9sdp" />
 
 
-                </LinearLayout>
+                <!--  </LinearLayout>-->
 
                 <TextView
                     android:id="@+id/status"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:fontFamily="@font/open_sans_regular"
-                    android:gravity="right"
                     android:paddingRight="@dimen/_5sdp"
                     android:text="Preparing"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/bg_login_center"
                     android:textStyle="bold" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"

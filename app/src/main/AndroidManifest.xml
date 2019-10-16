@@ -7,14 +7,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.lexxdigitals.easyfoodvone.utility.ApplicationContext"
+        android:name=".utility.ApplicationContext"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +22,14 @@
         android:supportsRtl="true"
         android:theme="@style/FullscreenTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".charity.SucessActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".charity.DonateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
 
         <receiver android:name="sunmi.ds.MsgReceiver">
             <intent-filter>
@@ -33,7 +39,7 @@
         </receiver>
 
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.SplashscreenActivity"
+            android:name=".SplashscreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
@@ -43,79 +49,80 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.lexxdigitals.easyfoodvone.login.view.impl.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name="com.lexxdigitals.easyfoodvone.forgot_password.view.impl.ForgotPasswordActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name="com.lexxdigitals.easyfoodvone.contact_support.view.impl.ContactSupportActivity"
+        <activity
+            android:name=".login.view.impl.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity"
+            android:name=".forgot_password.view.impl.ForgotPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".contact_support.view.impl.ContactSupportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".orders.view.impl.OrdersActivity"
             android:label="@string/title_activity_orders"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.single_order_detail.view.impl.SingleOrderDetailActivity"
+            android:name=".single_order_detail.view.impl.SingleOrderDetailActivity"
             android:label="@string/title_activity_orders"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity">
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity" />
         </activity>
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.TestMainActivity"
-            android:screenOrientation="portrait"
+            android:name=".TestMainActivity"
             android:label="@string/title_activity_test_main"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity">
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity" />
         </activity>
         <activity
-            android:screenOrientation="portrait"
-            android:name="com.lexxdigitals.easyfoodvone.new_order.view.impl.NewOrderActivity"
+            android:name=".new_order.view.impl.NewOrderActivity"
             android:label="@string/title_activity_new_orders"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.single_order_detail.view.impl.SingleOrderDetailActivity">
+            android:parentActivityName=".single_order_detail.view.impl.SingleOrderDetailActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.single_order_detail.view.impl.SingleOrderDetailActivity" />
         </activity>
         <activity
-            android:screenOrientation="portrait"
-            android:name="com.lexxdigitals.easyfoodvone.menu.view.impl.MenuActivity"
+            android:name=".menu.view.impl.MenuActivity"
             android:label="@string/title_activity_menu"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
-
         <service
-            android:name="com.lexxdigitals.easyfoodvone.firebase.MyFirebaseMessagingService"
+            android:name=".firebase.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.lexxdigitals.easyfoodvone.firebase.MyFirebaseInstanceIDService">
+        <service android:name=".firebase.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.menu_details.view.impl.MenuDetailsActivity"
+            android:name=".menu_details.view.impl.MenuDetailsActivity"
             android:label="@string/title_activity_menu_details"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.menu.view.impl.MenuActivity">
+            android:parentActivityName=".menu.view.impl.MenuActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.menu.view.impl.MenuActivity" />
         </activity>
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.single_order_report_detail.view.impl.OrderRepostDetailActivity"
+            android:name=".single_order_report_detail.view.impl.OrderRepostDetailActivity"
             android:label="@string/title_activity_orders"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity">
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity" />
@@ -132,37 +139,37 @@
         </provider>
 
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.spend_x_get_x_discount.view.impl.SpendXgetXdiscountActivity"
+            android:name=".spend_x_get_x_discount.view.impl.SpendXgetXdiscountActivity"
             android:label="@string/title_spend_x_get_discount_x"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity">
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity" />
         </activity>
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.flat_discount_amount_offer.view.impl.FlatDiscountAmountOfferActivity"
+            android:name=".flat_discount_amount_offer.view.impl.FlatDiscountAmountOfferActivity"
             android:label="@string/title_flat_iscount_mount_ffer"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity">
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity" />
         </activity>
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.discount_offer_with_percentage.view.impl.DiscountOfferWithPercentageActivity"
+            android:name=".discount_offer_with_percentage.view.impl.DiscountOfferWithPercentageActivity"
             android:label="@string/title_discount_offer_with_percentage"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity">
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity" />
         </activity>
         <activity
-            android:name="com.lexxdigitals.easyfoodvone.create_combo_meals_offer.view.impl.CreateComboMealsOfferActivity"
+            android:name=".create_combo_meals_offer.view.impl.CreateComboMealsOfferActivity"
             android:label="@string/title_combo_meal_offer"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity">
+            android:parentActivityName=".orders.view.impl.OrdersActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity" />

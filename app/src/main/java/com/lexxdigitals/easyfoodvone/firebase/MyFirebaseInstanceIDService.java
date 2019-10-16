@@ -32,42 +32,5 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
         Log.e("Token : ", UserPreferences.getUserPreferences().getString(this, Constants.FIREBASE_TOKEN));
 
-       /* FirebaseTokenUpdateRequest request = new FirebaseTokenUpdateRequest();
-        request.setUserId(loginResponse.getResult().getUserId());
-        request.setAccessToken(loginResponse.getResult().getAccessToken());
-        request.setToken(refreshedToken);
-
-        if (loginResponse.getResult().getUserId() != null && !loginResponse.getResult().getUserId().equals("")
-                && refreshedToken != null && !refreshedToken.equals("")) {
-            try {
-                String android_id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-                ApiInterface apiService = ApiClient.getClient(context).create(ApiInterface.class);
-                CompositeDisposable disposable = new CompositeDisposable();
-
-                disposable.add(apiService.updateFirebaseToken(request)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<String>() {
-                            @Override
-                            public void onSuccess(String result) {
-                                if (result.getResponseCode().equals("0")) {
-                                    Log.e("token update", "Token Updated successfully");
-                                    // Toast.makeText(ForgetPassword.this, "Please check your email for your password", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                Log.e("onError", "onError: " + e.getMessage());
-                            }
-                        }));
-            } catch (Exception ex) {
-                Log.e("Token updat problem : ", ex.toString());
-            }
-
-
-        }*/
-
-
     }
 }

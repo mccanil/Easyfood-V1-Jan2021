@@ -79,15 +79,11 @@ public class MenuFragment extends Fragment implements OnStartDragListener, DragA
 
     private void callMenuList(List<MenuCategoryList.MenuCategories> menu_items) {
         adapter = new DragAndDropGridAdapter(getActivity(), this, menu_items);
-
-        // recyclerItems.setHasFixedSize(true);
         if (recyclerItems != null)
             recyclerItems.setAdapter(adapter);
-
         final int spanCount = 2;
         final GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), spanCount);
         recyclerItems.setLayoutManager(layoutManager);
-
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(recyclerItems);
@@ -160,7 +156,6 @@ public class MenuFragment extends Fragment implements OnStartDragListener, DragA
             request.setMenu_category_id(menuCategories.getMenu_category_id());
             request.setMenu_category_current_position(previousPosition + "");
             request.setMenu_category_new_position(currentPosition + "");
-
             ApiInterface apiService = ApiClient.getClient(getActivity()).create(ApiInterface.class);
             CompositeDisposable disposable = new CompositeDisposable();
             disposable.add(apiService.getMenuCategoryItemsPositin(request)
@@ -189,13 +184,6 @@ public class MenuFragment extends Fragment implements OnStartDragListener, DragA
     @Override
     public void onResume() {
         super.onResume();
-       /* android.app.Fragment currentFragment = getActivity().getFragmentManager().findFragmentById(R.id.frameLayout);
-        FragmentTransaction fragTransaction =   (getActivity()).getFragmentManager().beginTransaction();
-        fragTransaction.detach(currentFragment);
-        fragTransaction.attach(currentFragment);
-        fragTransaction.commit();*/
-        // getFragmentManager().beginTransaction().detach(this).attach(this).commit();
-
         getAllMenuCategories(baseData.getRestaurant_id());
 
     }

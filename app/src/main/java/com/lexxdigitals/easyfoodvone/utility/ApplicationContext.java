@@ -7,6 +7,7 @@ import android.os.Handler;
 
 import com.lexxdigitals.easyfoodvone.R;
 import com.lexxdigitals.easyfoodvone.utility.printerutil.AidlUtil;
+import com.newrelic.agent.android.NewRelic;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +25,9 @@ public class ApplicationContext extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        NewRelic.withApplicationToken(
+                "eu01xx8e8c3e4790f9795fc7133941ac935ff9a204"
+        ).start(this.getApplicationContext());
         applicationContext = this;
         handler = new Handler();
         AidlUtil.getInstance().connectPrinterService(this);
@@ -34,13 +38,11 @@ public class ApplicationContext extends Application {
             if (player == null) {
                 handler.removeCallbacks(stopPlayer);
                 Uri alarmSound = Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.mobile_order_notification_sound);
-//              Uri alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + this.getPackageName() + "/raw/notification");
                 player = MediaPlayer.create(this, alarmSound);
                 player.setLooping(true);
                 player.start();
                 mediaPlayerStartTime = Calendar.getInstance().getTime();
                 handler.postDelayed(stopPlayer, (1000 * 60));
-//                handler.postDelayed(stopPlayer, 10000);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,11 +58,13 @@ public class ApplicationContext extends Application {
     public void stopNotificationSound() {
         try {
 
-            try{
-                player.stop();
-                player.release();
-                player = null;
-            }catch (Exception e){
+            try {
+                if (player != null) {
+                    player.stop();
+                    player.release();
+                    player = null;
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             if (player != null && player.isLooping() && player.isPlaying()) {

@@ -19,7 +19,7 @@ public class AdapterOrderDetails extends RecyclerView.Adapter<AdapterOrderDetail
     List<OrderDetailsResponse.OrderDetails.Cart> cartItems;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView quantity,name,price;
+        TextView quantity, name, price;
 
         public MyViewHolder(View view) {
             super(view);
@@ -31,8 +31,8 @@ public class AdapterOrderDetails extends RecyclerView.Adapter<AdapterOrderDetail
     }
 
 
-    public AdapterOrderDetails(Context context,List<OrderDetailsResponse.OrderDetails.Cart> cartItems) {
-        this.cartItems=cartItems;
+    public AdapterOrderDetails(Context context, List<OrderDetailsResponse.OrderDetails.Cart> cartItems) {
+        this.cartItems = cartItems;
         this.mContext = context;
     }
 
@@ -50,9 +50,6 @@ public class AdapterOrderDetails extends RecyclerView.Adapter<AdapterOrderDetail
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-//        holder.quantity.setText(cartItems.get(position).getItems().get(position).getProduct_qty());
-//        holder.name.setText(cartItems.get(position).getItems().get(position).getProduct_name());
-//        holder.price.setText(Constants.POUND+cartItems.get(position).getItems().get(position).getProduct_price());
 
 
     }
@@ -61,7 +58,6 @@ public class AdapterOrderDetails extends RecyclerView.Adapter<AdapterOrderDetail
     public int getItemCount() {
         return cartItems.size();
     }
-
 
 
 }

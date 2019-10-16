@@ -1,12 +1,8 @@
 package com.lexxdigitals.easyfoodvone.api_handler;
 
 public class ApiConstants {
-   // public static final String BASE_URL = " http://35.177.163.219/mcc-easyfood-backend/public/";
-     public static final String BASE_URL = "http://35.177.163.219/mcc-easyfood-backend/public/api/v1_app/v1/";
-    // public static final String BASE_URL = "http://35.177.163.219/easyfood_backend/public/api/v1_app/v1/";
-//    public static final String BASE_URL = "http://13.233.171.105/easyfood_backend/public/api/v1_app/v1/";
 
-
+    public static final String BASE_URL = "http://35.177.163.219/mcc-easyfood-backend/public/api/v1_app/v1/";
     public static final String LOGIN = "login";
     public static final String LOGOUT = "user_logout";
     public static final String CONTACT_SUPPORT = "supports";
@@ -23,7 +19,6 @@ public class ApiConstants {
     public static final String GET_MENU_CATEGORY_ITEM = "menu_category_items";
     public static final String SET_MENU_CATEGORY_ITEM_POSITION = "menu_product_position";
     public static final String ACTIVE_DEACTIVE_MENU_PRODUCT = "active_deactive_menu_product";
-    public static final String SET_MENU_CATEGORY_POSITION = "menu_category_position";
     public static final String ACTIVE_DEACTIVE_MENU = "active_deactive_menu_category";
     public static final String UPDAET_MENU_CATEGORY = "update_category";
     public static final String UPDATE_MENU_PRODUCT = "update_menu_product";
@@ -53,7 +48,6 @@ public class ApiConstants {
     public static final String CREATE_COMBO_OFFER = "add_combo_offer";
     public static final String GET_OFFERS = "get_offers";
     public static final String DELETE_OFFER = "delete_offer";
-    public static final String GET_PRODUCTS_FILTERED_LIST = "";
     public static final String GET_SERVE_STYLE = "get_serve_style";
     public static final String SET_SERVE_STYLE = "set_serve_style";
     public static final String GET_MENU_ITEM_DETAILS = "get_menu_product";

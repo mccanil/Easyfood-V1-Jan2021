@@ -25,12 +25,12 @@ public class AdapterRestaurantTimings extends RecyclerView.Adapter<AdapterRestau
     public TimingAdapter timingAdapter;
 
 
-    public AdapterRestaurantTimings(Context mContext,TimingAdapter.OnAdapterItemClickListener editTimeClickListener, OnAdapterItemClickListener onAdapterItemClickListener, List<AllDaysRestaurantTiming.Data> allDaysList) {
+    public AdapterRestaurantTimings(Context mContext, TimingAdapter.OnAdapterItemClickListener editTimeClickListener, OnAdapterItemClickListener onAdapterItemClickListener, List<AllDaysRestaurantTiming.Data> allDaysList) {
         this.mContext = mContext;
         this.activity = activity;
         this.allDaysList = allDaysList;
         this.onAdapterItemClickListener = onAdapterItemClickListener;
-        this.editTimeClickListener =editTimeClickListener;
+        this.editTimeClickListener = editTimeClickListener;
 
     }
 
@@ -72,10 +72,9 @@ public class AdapterRestaurantTimings extends RecyclerView.Adapter<AdapterRestau
         if (allDaysList != null) {
             holder.daysName.setText(allDaysList.get(position).getDay());
             holder.timingRecycler.setLayoutManager(new LinearLayoutManager(mContext));
-            timingAdapter = new TimingAdapter(allDaysList.get(position).getData(), mContext,editTimeClickListener);
+            timingAdapter = new TimingAdapter(allDaysList.get(position).getData(), mContext, editTimeClickListener);
             holder.timingRecycler.setAdapter(timingAdapter);
-            if (allDaysList.get(position).getData().size() >=4)
-            {
+            if (allDaysList.get(position).getData().size() >= 4) {
                 holder.addtiming.setVisibility(View.GONE);
                 holder.v.setVisibility(View.GONE);
             } else {
@@ -101,31 +100,5 @@ public class AdapterRestaurantTimings extends RecyclerView.Adapter<AdapterRestau
         return allDaysList.size();
     }
 
-
-
-
-    /*public void openTimePicker(final TextView txtTime){
-        // Get Current Date
-        // Get Current Time
-        final Calendar c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
-
-        // Launch Time Picker Dialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(mActivity,
-                new TimePickerDialog.OnTimeSetListener() {
-
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay,
-                                          int minute) {
-
-                        txtTime.setText(hourOfDay + ":" + minute);
-                    }
-                }, mHour, mMinute, false);
-        timePickerDialog.show();
-
-    }
-
-*/
 
 }

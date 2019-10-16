@@ -46,8 +46,8 @@ public class AdapterProfileImage extends RecyclerView.Adapter<AdapterProfileImag
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        if (restaurant_images.get(position).getImage_url()!=null)
-        Picasso.get().load(restaurant_images.get(position).getImage_url()).placeholder(R.drawable.picture_profile).error(R.drawable.picture_profile).into(holder.thumbnail);
+        if (restaurant_images.get(position).getImage_url() != null)
+            Picasso.get().load(restaurant_images.get(position).getImage_url()).placeholder(R.drawable.picture_profile).error(R.drawable.picture_profile).into(holder.thumbnail);
 
     }
 
@@ -74,7 +74,6 @@ public class AdapterProfileImage extends RecyclerView.Adapter<AdapterProfileImag
                 public boolean onSingleTapUp(MotionEvent e) {
                     return true;
                 }
-
                 @Override
                 public void onLongPress(MotionEvent e) {
                     View child = recyclerView.findChildViewUnder(e.getX(), e.getY());

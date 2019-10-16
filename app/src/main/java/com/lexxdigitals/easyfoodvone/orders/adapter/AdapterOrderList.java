@@ -33,7 +33,7 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
     OnItemClickListener onItemClickListener;
     String order = "new";
     ArrayList<String> statusList;
-    ArrayList<String> statusList1;
+    ArrayList<String> statusList1, statusList2;
     int whichTabActive = -1;
 
     public interface OnItemClickListener {
@@ -81,7 +81,7 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
             spinner = (Spinner) view.findViewById(R.id.spinner);
 
             // Spinner Drop down elements
-            statusList1 = new ArrayList<>();
+        /*    statusList1 = new ArrayList<>();
             statusList = new ArrayList<>();
             statusList.add("Change Status");
             statusList.add("Prepared");
@@ -91,19 +91,17 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
             statusList1.add("Change Status");
             statusList1.add("preparing");
             statusList1.add("out_for_delivery");
-            statusList1.add("delivered");
+            statusList1.add("delivered");*/
 
+
+            // ,out_for_delivery,delivered
             accept.setOnClickListener(this);
             reject.setOnClickListener(this);
             viewDetail.setOnClickListener(this);
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext, R.layout.order_status_spinner_item, statusList);
-            adapter.setDropDownViewResource(R.layout.order_status_spinner_item);
-            spinner.setAdapter(adapter);
-
-            spinner.setOnItemSelectedListener(this);
 
         }
+
 
         @Override
         public void onClick(View v) {
@@ -132,7 +130,7 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            try {
+           /* try {
                 ApplicationContext.getInstance().stopNotificationSound();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -146,7 +144,7 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
             if (item != null) {
                 onItemClickListener.onSpinnerStatus(item.toString(), ordersListResponse.get(getLayoutPosition()), position);
 
-            }
+            }*/
         }
 
         @Override
@@ -200,7 +198,7 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
 
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final int mPosition = position;
         if (whichTabActive != -1 && whichTabActive == 2) {
             holder.layoutOrderStatus.setVisibility(View.VISIBLE);
@@ -223,9 +221,93 @@ public class AdapterOrderList extends RecyclerView.Adapter<AdapterOrderList.MyVi
         }
 
         if (order.equals("accepted")) {
+
+
+            if (ordersListResponse.get(position).getDelivery_option().equalsIgnoreCase("Collection")) {
+                statusList = new ArrayList<>();
+                statusList1 = new ArrayList<>();
+                statusList.add("Change Status");
+                statusList.add("Preparing");
+                statusList.add("Collected");
+
+                statusList1.add("Change Status");
+                statusList1.add("preparing");
+                statusList1.add("delivered");
+
+                if (ordersListResponse.get(position).getOrder_status().equalsIgnoreCase("Accepted")) {
+                    holder.statusSpinner.setText("Accepted");
+                } else if (ordersListResponse.get(position).getOrder_status().equalsIgnoreCase("Preparing")) {
+                    holder.statusSpinner.setText("Preparing");
+                } else if (ordersListResponse.get(position).getOrder_status().equalsIgnoreCase("Delivered")) {
+                    holder.statusSpinner.setText("Collected");
+                }
+            } else {
+
+                statusList = new ArrayList<>();
+                statusList2 = new ArrayList<>();
+                statusList.add("Change Status");
+                statusList.add("Preparing");
+                statusList.add("On the way");
+                statusList.add("Delivered");
+
+                statusList2.add("Change Status");
+                statusList2.add("preparing");
+                statusList2.add("out_for_delivery");
+                statusList2.add("delivered");
+
+                if (ordersListResponse.get(position).getOrder_status().equalsIgnoreCase("Accepted")) {
+                    holder.statusSpinner.setText("Accepted");
+                } else if (ordersListResponse.get(position).getOrder_status().equalsIgnoreCase("Preparing")) {
+                    holder.statusSpinner.setText("Preparing");
+                } else if (ordersListResponse.get(position).getOrder_status().equalsIgnoreCase("On the way")) {
+                    holder.statusSpinner.setText("On the way");
+                } else if (ordersListResponse.get(position).getOrder_status().equalsIgnoreCase("Delivered")) {
+                    holder.statusSpinner.setText("Delivered");
+                }
+
+            }
+
+
+            //  preparing,out_for_delivery,delivered
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext, R.layout.order_status_spinner_item, statusList);
+            adapter.setDropDownViewResource(R.layout.order_status_spinner_item);
+            holder.spinner.setAdapter(adapter);
+
             holder.statusSpinner.setVisibility(View.VISIBLE);
             holder.statusText.setVisibility(View.VISIBLE);
-            holder.statusSpinner.setText(ordersListResponse.get(position).getOrder_status());
+            holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    try {
+                        ApplicationContext.getInstance().stopNotificationSound();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    if (i == 0) {
+                        return;
+                    }
+                    String item;
+//            String item = parent.getItemAtPosition(position).toString();
+                    if (ordersListResponse.get(position).getDelivery_option().equalsIgnoreCase("Collection")) {
+                        item = statusList1.get(i);
+                    } else {
+                        item = statusList2.get(i);
+                    }
+
+                    if (item != null) {
+                        onItemClickListener.onSpinnerStatus(item.toString(), ordersListResponse.get(holder.getAdapterPosition()), i);
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+
         } else {
             holder.statusSpinner.setVisibility(View.INVISIBLE);
             holder.statusText.setVisibility(View.INVISIBLE);

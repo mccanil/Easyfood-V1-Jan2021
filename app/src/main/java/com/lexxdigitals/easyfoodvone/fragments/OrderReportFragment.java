@@ -49,12 +49,10 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class OrderReportFragment extends Fragment implements View.OnClickListener {
-
     @BindView(R.id.btn_today)
     Button btnToday;
     @BindView(R.id.btn_yesterday)
     Button btnYesterday;
-
     @BindView(R.id.btn_start_date)
     LinearLayout btnStartDate;
     @BindView(R.id.btn_end_date)
@@ -200,15 +198,6 @@ public class OrderReportFragment extends Fragment implements View.OnClickListene
                 sentReport();
             }
         });
-
-
-       /* btnBootomPrintReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PrintEsayFood.printOrderr(print);
-            }
-        });
-*/
 
     }
 

@@ -163,15 +163,10 @@ public class RatingReviewFragment extends Fragment implements AdapterRatingRevie
                             ratingBarAverage.setVisibility(View.VISIBLE);
                             ratingBarAverage.setNumStars(1);
                             ratingBarAverage.setRating(1);
-//                            ratingBarAverage.setRating(Float.parseFloat(data.getData().getTotal_ratings()));
                             averageRating.setText("(" + data.getData().getTotal_no_ratings() + ")");
-
-
                             mAdapter = new AdapterRatingReview(data.getData().getUser_review_ratings(), mContext, mActivity, RatingReviewFragment.this);
                             ratingList.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
                             ratingList.setAdapter(mAdapter);
-
-
                             Log.e("Ratings data ", data.toString());
 
                         }

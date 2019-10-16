@@ -33,7 +33,7 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
 
     private Context mContext;
     private Activity mActivity;
-    private EditText edt_new_password, edt_confirm_paswword,edit_current_password;
+    private EditText edt_new_password, edt_confirm_paswword, edit_current_password;
     private Button btnReset, btnCancel;
     private View view;
 
@@ -67,7 +67,7 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
         edt_confirm_paswword = (EditText) view.findViewById(R.id.edit_confirm_password);
         btnCancel = (Button) view.findViewById(R.id.btn_contact_support);
         btnReset = (Button) view.findViewById(R.id.btn_reset);
-        edit_current_password =  view.findViewById(R.id.edit_current_password);
+        edit_current_password = view.findViewById(R.id.edit_current_password);
 
         //****set listener********
         btnReset.setOnClickListener(this);
@@ -92,17 +92,14 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
 
         switch (v.getId()) {
             case R.id.btn_reset: {
-
                 String newPassword = edt_new_password.getText().toString();
                 String confirmPassword = edt_confirm_paswword.getText().toString();
                 String currentPass = edit_current_password.getText().toString();
 
-                if (TextUtils.isEmpty(currentPass))
-                {
+                if (TextUtils.isEmpty(currentPass)) {
                     edit_current_password.setError("Enter current password");
                     return;
-                } else if (TextUtils.isEmpty(newPassword))
-                {
+                } else if (TextUtils.isEmpty(newPassword)) {
                     edt_new_password.setError("Enter new password");
                     return;
                 } else if (TextUtils.isEmpty(confirmPassword)) {
@@ -127,7 +124,6 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
     }
 
     private void changePassword() {
-
         final LoadingDialog dialog = new LoadingDialog(getActivity(), "Changing please wait...");
         dialog.setCancelable(false);
         dialog.show();
@@ -144,19 +140,16 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
             disposable.add(apiService.changePassword(request)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<CommonResponse>()
-                    {
+                    .subscribeWith(new DisposableSingleObserver<CommonResponse>() {
                         @Override
-                        public void onSuccess(CommonResponse data)
-                        {
+                        public void onSuccess(CommonResponse data) {
                             dialog.dismiss();
-                            if (data.isSuccess())
-                            {
+                            if (data.isSuccess()) {
                                 Toast.makeText(mContext, data.getMessage(), Toast.LENGTH_SHORT).show();
                                 edit_current_password.setText("");
                                 edt_new_password.setText("");
                                 edt_confirm_paswword.setText("");
-                            }else {
+                            } else {
                                 Toast.makeText(mContext, data.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }

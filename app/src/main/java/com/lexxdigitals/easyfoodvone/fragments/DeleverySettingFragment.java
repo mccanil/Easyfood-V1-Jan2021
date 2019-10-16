@@ -499,10 +499,6 @@ public class DeleverySettingFragment extends Fragment implements AdapterDelevery
     }
 
 
-    public void alertDialogSingle(String msg) {
-
-    }
-
 
     public void updatePostCode(String restaurant_id, final String post_code, final double minOrder, final double deliveryCharge, final double freeDelivery, final AdapterDeleveryCharges.MyViewHolder holder) {
 
@@ -599,7 +595,6 @@ public class DeleverySettingFragment extends Fragment implements AdapterDelevery
 
 
     public void updateAllPostCode(String restaurant_id, final String post_code, final double minOrder, final double deliveryCharge, final double freeDelivery) {
-
         final LoadingDialog dialog = new LoadingDialog(mActivity, "Loading Delivery Settings...");
         dialog.setCancelable(false);
         dialog.show();
@@ -619,14 +614,9 @@ public class DeleverySettingFragment extends Fragment implements AdapterDelevery
 
                         @Override
                         public void onSuccess(UpdatePostCodeDeliveryTimeResponse data) {
-
                             dialog.dismiss();
-
                             if (data.isSuccess()) {
-
                                 alertDialouge(data.getMessage());
-
-
                             }
                         }
 

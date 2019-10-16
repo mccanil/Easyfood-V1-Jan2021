@@ -21,35 +21,43 @@
             android:icon="@drawable/menu_restaurant_timing"
             android:title="Restaurant Timings" />
 
-            <item
-                android:id="@+id/nav_orders_report"
-                android:icon="@drawable/menu_order_report"
-                android:title="Orders Report" />
-            <item
-                android:id="@+id/nav_revenue_report"
-                android:icon="@drawable/menu_revenue_report"
-                android:title="Revenue Report" />
-            <item
-                android:id="@+id/nav_offers"
-                android:icon="@drawable/menu_logout"
-                android:title="Offers" />
-            <item
+        <item
+            android:id="@+id/nav_orders_report"
+            android:icon="@drawable/menu_order_report"
+            android:title="Orders Report" />
+        <item
+            android:id="@+id/nav_revenue_report"
+            android:icon="@drawable/menu_revenue_report"
+            android:title="Revenue Report" />
+        <item
+            android:id="@+id/nav_offers"
+            android:icon="@drawable/menu_logout"
+            android:title="Offers" />
+        <item
             android:id="@+id/nav_review_ratings"
             android:icon="@drawable/menu_rating"
             android:title="Review &amp; Ratings" />
-            <item
-                android:id="@+id/nav_profile"
-                android:icon="@drawable/menu_profile"
-                android:title="Profile" />
+        <!--*****Omnsittechhub Solution*****-->
+
+        <item
+            android:id="@+id/nav_charity"
+            android:icon="@drawable/menu_charity"
+            android:title="Charity" />
+        <!--*************XXXX*****************-->
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/menu_profile"
+            android:title="Profile" />
         <item
             android:id="@+id/nav_change_password"
             android:icon="@drawable/ic_https_black_24dp"
             android:title="Change Password" />
 
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/menu_logout"
-                android:title="Logout" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/menu_logout"
+            android:title="Logout" />
     </group>
 
 </menu>

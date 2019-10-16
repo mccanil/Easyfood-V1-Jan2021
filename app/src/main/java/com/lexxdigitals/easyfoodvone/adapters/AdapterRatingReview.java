@@ -135,8 +135,6 @@ public class AdapterRatingReview extends RecyclerView.Adapter<AdapterRatingRevie
             @Override
             public void onClick(View v) {
                 ratingCommentClickListner.onThankyouClicked(position, holder, user_review_ratings.get(position));
-
-//
             }
         });
         holder.btnReply.setOnClickListener(new View.OnClickListener() {
@@ -144,7 +142,7 @@ public class AdapterRatingReview extends RecyclerView.Adapter<AdapterRatingRevie
             public void onClick(View v) {
 
                 ratingCommentClickListner.onReplyClicked(position, holder, user_review_ratings.get(position));
-//
+
             }
         });
 
@@ -158,7 +156,7 @@ public class AdapterRatingReview extends RecyclerView.Adapter<AdapterRatingRevie
         holder.ratingBarOverall.setVisibility(View.VISIBLE);
         holder.ratingBarOverall.setNumStars(1);
         holder.ratingBarOverall.setRating(1);
-//        holder.ratingBarOverall.setRating(Float.parseFloat(user_review_ratings.get(position).getOverall_rating()));
+
         holder.ratingBarFood.setRating(Float.parseFloat(user_review_ratings.get(position).getFood_quality_rating()));
         holder.ratingBarOnTime.setRating(Float.parseFloat(user_review_ratings.get(position).getDelivery_rating()));
         holder.ratingBarOrderAgain.setRating(Float.parseFloat(user_review_ratings.get(position).getOrder_again_rating()));

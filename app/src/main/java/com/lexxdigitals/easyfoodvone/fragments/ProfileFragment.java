@@ -43,9 +43,8 @@ import pub.devrel.easypermissions.EasyPermissions;
 import static android.app.Activity.RESULT_OK;
 
 
-public class ProfileFragment extends Fragment
-{
-    EditText postcode,restname,serve_style,about,web,landline,phone,email,address;
+public class ProfileFragment extends Fragment {
+    EditText postcode, restname, serve_style, about, web, landline, phone, email, address;
     @BindView(R.id.image_list_view)
     RecyclerView imageListView;
     @BindView(R.id.add_more_image)
@@ -79,15 +78,15 @@ public class ProfileFragment extends Fragment
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        postcode =view.findViewById(R.id.postcode);
-        restname =view.findViewById(R.id.restname);
-        serve_style =view.findViewById(R.id.serve_style);
-        about =view.findViewById(R.id.about);
-        web =view.findViewById(R.id.web);
-        phone =view.findViewById(R.id.phone);
-        landline =view.findViewById(R.id.landline);
-        address =view.findViewById(R.id.address);
-        email =view.findViewById(R.id.email);
+        postcode = view.findViewById(R.id.postcode);
+        restname = view.findViewById(R.id.restname);
+        serve_style = view.findViewById(R.id.serve_style);
+        about = view.findViewById(R.id.about);
+        web = view.findViewById(R.id.web);
+        phone = view.findViewById(R.id.phone);
+        landline = view.findViewById(R.id.landline);
+        address = view.findViewById(R.id.address);
+        email = view.findViewById(R.id.email);
 
         data = Constants.getStoredData(getActivity());
 
@@ -112,8 +111,7 @@ public class ProfileFragment extends Fragment
         return view;
     }
 
-    private void setData()
-    {
+    private void setData() {
         postcode.setText(data.getPost_code());
         restname.setText(data.getRestaurant_name());
         serve_style.setText(data.getServe_style());
@@ -132,8 +130,7 @@ public class ProfileFragment extends Fragment
 
     }
 
-    public void setRecyclerView()
-    {
+    public void setRecyclerView() {
 
 
         imageAdapter = new AdapterProfileImage(mContext, data.getRestaurant_images());
@@ -190,8 +187,6 @@ public class ProfileFragment extends Fragment
                             startActivityForResult(m_intent, PICK_IMAGE_CAMERA);
                         } else if (options[item].equals("Choose From Gallery")) {
                             dialog.dismiss();
-//                            Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                            startActivityForResult(pickPhoto, PICK_IMAGE_GALLERY);
                             Intent intent = new Intent();
                             intent.setType("image/*");
                             intent.setAction(Intent.ACTION_GET_CONTENT);

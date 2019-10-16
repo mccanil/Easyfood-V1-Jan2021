@@ -61,7 +61,7 @@ public class Constants {
     public static DialogClickedListener dialogClicked;
     public static int ORDER_COUNT = 0;
     private static DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-    private static DecimalFormat decimalFormatWithoutDot = new DecimalFormat("##");
+
 
     public interface DialogClickedListener {
         void onDialogClicked();
@@ -75,10 +75,6 @@ public class Constants {
     public static final String NOTIFICATION_TYPE_CANCELED = "cancel";
 
 
-    static boolean success = false;
-    public static final String DEVELOPER_KEY = "AIzaSyB_0zHJbmm00TBeEaSq0PXF3wUU0IGRKn4";
-
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public static void setStatusBarGradiant(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -86,7 +82,6 @@ public class Constants {
             Drawable background = activity.getResources().getDrawable(R.drawable.bg_actionbar);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(activity.getResources().getColor(android.R.color.transparent));
-            //  window.setNavigationBarColor(activity.getResources().getColor(android.R.color.transparent));
             window.setBackgroundDrawable(background);
         }
     }
@@ -97,10 +92,6 @@ public class Constants {
         fromActivity.overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
     }
 
-    public static void back(Activity fromActivity) {
-        fromActivity.finish();
-        fromActivity.overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
-    }
 
 
     public static LoginResponse.Data getStoredData(Context context) {
@@ -112,45 +103,6 @@ public class Constants {
         return format.parse(date);
     }
 
-    public static void homeDelivery(final String openOrClose, String restaurantId, String userId, final Activity activity) {
-        RestaurantOpenCloseRequest restaurantOpenCloseRequest = new RestaurantOpenCloseRequest();
-        restaurantOpenCloseRequest.setOpen_close(openOrClose);
-        restaurantOpenCloseRequest.setRestaurant_id(restaurantId);
-        restaurantOpenCloseRequest.setUser_id(userId);
-
-        try {
-            ApiInterface apiService = ApiClient.getClient(activity).create(ApiInterface.class);
-            CompositeDisposable disposable = new CompositeDisposable();
-            disposable.add(apiService.openCloseHomeDelivery(restaurantOpenCloseRequest)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<RestaurantOpenCloseResponse>() {
-                        @Override
-                        public void onSuccess(RestaurantOpenCloseResponse data) {
-                            if (data.isSuccess()) {
-                                LoginResponse loginResponse = new LoginResponse();
-                                loginResponse.getData().setHome_delivery(openOrClose.equals("open"));
-                                loginResponse.getData().setOpen(openOrClose.equals("open"));
-                                Log.e("Login response ", ">>>>>>>>>>  " + data.toString());
-                            } else {
-                                //Toast.makeText(activity, data.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            Toast.makeText(activity, "Server not responding", Toast.LENGTH_SHORT).show();
-                            Log.e("onError", "onError: " + e.getMessage());
-                        }
-                    }));
-
-        } catch (Exception e) {
-            Log.e("Exception ", e.toString());
-            Toast.makeText(activity, "Server not responding.", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
-
-    }
 
     public static void alertDialog(String msg, Activity activity, DialogClickedListener dialogClickedListener) {
         Constants.dialogClicked = dialogClickedListener;
@@ -197,46 +149,6 @@ public class Constants {
         return decimalFormat.format(aDouble);
     }
 
-    public static String decimalFormat(Float aFloat) {
-        return decimalFormat.format(aFloat);
-    }
-
-
-    public static void dateSelector(final TextView editText, final Activity activity) {
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog.OnDateSetListener dpd = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                          int dayOfMonth) {
-
-                        CharSequence strDate = null;
-                        Time chosenDate = new Time();
-                        chosenDate.set(dayOfMonth, monthOfYear, year);
-                        long dtDob = chosenDate.toMillis(true);
-
-                        strDate = DateFormat.format("yyyy-MM-dd", dtDob);
-
-                        editText.setText(strDate);
-                    }
-                };
-
-                DatePickerDialog d = new DatePickerDialog(activity, dpd, mYear, mMonth, mDay);
-                d.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-                d.show();
-
-            }
-        });
-
-
-    }
 
     public static void dateSelector1(final TextView editText, final Activity activity) {
         editText.setOnClickListener(new View.OnClickListener() {
@@ -399,135 +311,14 @@ public class Constants {
             strDate = mFormatTo.format(date);
         } catch (ParseException e) {
             strDate = input;
-//                Log.e("Date Parse Exception", "Shhh.. try other formats");
         }
 
 
         return strDate;
     }
 
-    public static void dateSelectorWithFormattedEndDate(final TextView editText, final Activity activity, final long startMillies) {
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog.OnDateSetListener dpd = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                          int dayOfMonth) {
-
-                        CharSequence strDate = null;
-                        Time chosenDate = new Time();
-                        chosenDate.set(dayOfMonth, monthOfYear, year);
-                        long dtDob = chosenDate.toMillis(true);
-
-                        strDate = DateFormat.format("dd-MMM-yyyy", dtDob);
-
-                        editText.setText(strDate);
-                    }
-                };
-
-                DatePickerDialog d = new DatePickerDialog(activity, dpd, mYear, mMonth, mDay);
-                d.getDatePicker().setMinDate(startMillies - 1000);
-                d.show();
-
-            }
-        });
-    }
-
-    public static void dateSelectorWithFormattedDate1(final TextView editText, final Activity activity) {
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog.OnDateSetListener dpd = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                          int dayOfMonth) {
-
-                        CharSequence strDate = null;
-                        Time chosenDate = new Time();
-                        chosenDate.set(dayOfMonth, monthOfYear, year);
-                        long dtDob = chosenDate.toMillis(true);
-
-                        strDate = DateFormat.format("yyyy-MM-dd", dtDob);
-
-                        editText.setText(strDate);
-                    }
-                };
-
-                DatePickerDialog d = new DatePickerDialog(activity, dpd, mYear, mMonth, mDay);
-                d.show();
-
-            }
-        });
-    }
-
-    public static void dateSelectorWithFormattedEndDateDate1(final TextView editText, final Activity activity, final long startDate) {
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog.OnDateSetListener dpd = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                          int dayOfMonth) {
-
-                        CharSequence strDate = null;
-                        Time chosenDate = new Time();
-                        chosenDate.set(dayOfMonth, monthOfYear, year);
-                        long dtDob = chosenDate.toMillis(true);
-
-                        strDate = DateFormat.format("yyyy-MM-dd", dtDob);
-
-                        editText.setText(strDate);
-                    }
-                };
-
-                DatePickerDialog d = new DatePickerDialog(activity, dpd, mYear, mMonth, mDay);
-                d.getDatePicker().setMinDate(startDate - 1000);
-                d.show();
-
-            }
-        });
-    }
 
     public static void selectTime(final TextView editText, final Context activity) {
-        /*editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(activity, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        editText.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
-                    }
-                }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
-
-            }
-        });*/
-
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -601,7 +392,6 @@ public class Constants {
                 pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
             }
         }
-
         Bitmap bitmap = Bitmap.createBitmap(width, height,
                 Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
@@ -639,7 +429,6 @@ public class Constants {
     }
 
     private static String guessAppropriateEncoding(CharSequence contents) {
-        // Very crude at the moment
         for (int i = 0; i < contents.length(); i++) {
             if (contents.charAt(i) > 0xFF) {
                 return "UTF-8";
@@ -659,24 +448,19 @@ public class Constants {
             Date date = mFormatFrom.parse(input);
             strDate = mFormatTo.format(date);
         } catch (ParseException e) {
-//                Log.e("Date Parse Exception", "Shhh.. try other formats");
+            e.printStackTrace();
         }
-
-
         return strDate;
     }
 
     public static String getDayMonth(String date) {
-
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-
         Date readDate = null;
         try {
             readDate = df.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         String dayMonth = readDate.toString().substring(0, 10);
 
         return dayMonth;

@@ -2,6 +2,7 @@ package com.lexxdigitals.easyfoodvone.login.view.impl;
 
 import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -37,7 +38,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class LoginActivity extends AppCompatActivity {
     EditText input, edit_username, edit_password;
-    Button btn_login, btn_contact_support;
+    Button btn_login, btn_contact_support, btn_signup;
     SigninPresenter presenter;
     TextView txt_forgot_password;
     LoginResponse loginResponse;
@@ -56,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         edit_username = findViewById(R.id.edit_username);
         edit_password = findViewById(R.id.edit_password);
         btn_login = findViewById(R.id.btn_login);
+        btn_signup = findViewById(R.id.btn_signup);
         btn_contact_support = findViewById(R.id.btn_contact_support);
         txt_forgot_password = findViewById(R.id.txt_forgot_password);
 
@@ -110,6 +112,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ef.webnseo.co.uk/restaurant-signup"));
+                startActivity(browserIntent);
+            }
+        });
     }
 
     //TODO:  Login now....
@@ -139,9 +150,9 @@ public class LoginActivity extends AppCompatActivity {
                             if (data.isSuccess()) {
 
                                 loginResponse = data;
-                                UserPreferences.getUserPreferences().setBoolean(LoginActivity.this,"LoginCheck",true);
-                                String LogoUrl=loginResponse.getData().getLogo();
-                                UserPreferences.getUserPreferences().setString(LoginActivity.this,"LogoUrl",LogoUrl);
+                                UserPreferences.getUserPreferences().setBoolean(LoginActivity.this, "LoginCheck", true);
+                                String LogoUrl = loginResponse.getData().getLogo();
+                                UserPreferences.getUserPreferences().setString(LoginActivity.this, "LogoUrl", LogoUrl);
                                 Log.e("Login response ", ">>>>>>>>>>  " + data.toString());
                                 UserPreferences.getUserPreferences().setResponse(LoginActivity.this, Constants.LOGIN_RESPONSE, data.getData());
                                 Constants.switchActivity(LoginActivity.this, OrdersActivity.class);

@@ -46,10 +46,9 @@ public class SetRestaurantTimingsFragment extends Fragment implements AdapterRes
     Unbinder unbinder;
     private Context mContext;
     private Activity mActivity;
-    static AlertDialog mDialog;
+
     private AdapterRestaurantTimings mAdapter;
     DeleteTimingDialog delDialog;
-
 
 
     public SetRestaurantTimingsFragment() {
@@ -59,11 +58,11 @@ public class SetRestaurantTimingsFragment extends Fragment implements AdapterRes
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.mContext =context;
+        this.mContext = context;
     }
 
     @SuppressLint("ValidFragment")
-    public SetRestaurantTimingsFragment( Activity mActivity) {
+    public SetRestaurantTimingsFragment(Activity mActivity) {
         this.mActivity = mActivity;
     }
 
@@ -195,8 +194,7 @@ public class SetRestaurantTimingsFragment extends Fragment implements AdapterRes
 
     //TODO: Called from AdapterRestaurantTiming....
     @Override
-    public void onOkButtonClicked(String isOpen, String day, String openingTime, String deliveryTime, String collectionTime)
-    {
+    public void onOkButtonClicked(String isOpen, String day, String openingTime, String deliveryTime, String collectionTime) {
         addTiming(isOpen, day, openingTime, deliveryTime, collectionTime);
 
     }
@@ -204,8 +202,7 @@ public class SetRestaurantTimingsFragment extends Fragment implements AdapterRes
 
     //TODO; Called from edit dialog.........
     @Override
-    public void onUpdateButtonClicked(String id, String isOpen, String day, String openingTime, String deliveryTime, String collectionTiming)
-    {
+    public void onUpdateButtonClicked(String id, String isOpen, String day, String openingTime, String deliveryTime, String collectionTiming) {
         final LoadingDialog dialog = new LoadingDialog(getActivity(), "Updating timing...");
         dialog.setCancelable(false);
         dialog.show();
@@ -221,7 +218,7 @@ public class SetRestaurantTimingsFragment extends Fragment implements AdapterRes
 
 
             String s1 = String.valueOf(day.charAt(0));
-            request.setDay(s1.toUpperCase() +day.substring(1,3));
+            request.setDay(s1.toUpperCase() + day.substring(1, 3));
 
 
             ApiInterface apiService = ApiClient.getClient(getActivity()).create(ApiInterface.class);
@@ -266,12 +263,10 @@ public class SetRestaurantTimingsFragment extends Fragment implements AdapterRes
     }
 
 
-
     //TODO: Called from TimingAdapter....
     @Override
-    public void onDeleteClick(int position, AllDaysRestaurantTiming.Data.TimingData timings, TimingAdapter.TimingViewHolder holder)
-    {
-        delDialog = new DeleteTimingDialog(position,getActivity(),SetRestaurantTimingsFragment.this,timings.getId());
+    public void onDeleteClick(int position, AllDaysRestaurantTiming.Data.TimingData timings, TimingAdapter.TimingViewHolder holder) {
+        delDialog = new DeleteTimingDialog(position, getActivity(), SetRestaurantTimingsFragment.this, timings.getId());
         delDialog.setCancelable(false);
         delDialog.show();
     }
@@ -279,8 +274,7 @@ public class SetRestaurantTimingsFragment extends Fragment implements AdapterRes
 
     //TODO: Called from delete confrmation dialog
     @Override
-    public void onDeleteDilogOkClicked(final int position, String id)
-    {
+    public void onDeleteDilogOkClicked(final int position, String id) {
         final LoadingDialog dialog = new LoadingDialog(getActivity(), "Deleting timing...");
         dialog.setCancelable(false);
         dialog.show();
@@ -322,7 +316,6 @@ public class SetRestaurantTimingsFragment extends Fragment implements AdapterRes
             Toast.makeText(getActivity(), "Server not responding.", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
-
 
 
     }

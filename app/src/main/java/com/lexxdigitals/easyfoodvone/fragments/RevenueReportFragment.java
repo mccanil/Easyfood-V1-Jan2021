@@ -100,8 +100,6 @@ public class RevenueReportFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_revenue_report, container, false);
-
-
         total_product_sold = view.findViewById(R.id.total_product_sold);
         text_total_orders = view.findViewById(R.id.text_total_orders);
         endDate = view.findViewById(R.id.endDate);
@@ -112,21 +110,15 @@ public class RevenueReportFragment extends Fragment {
         total_revenue_collected = view.findViewById(R.id.total_revenue_collected);
         text_grossProfit = view.findViewById(R.id.text_grossProfit);
         findReportBetweenDates = view.findViewById(R.id.findReportBetweenDates);
-
-
         unbinder = ButterKnife.bind(this, view);
         alertDialogMPIN();
         clickListeners();
-
-
         return view;
 
 
     }
 
     private void clickListeners() {
-
-
         btnStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -316,15 +308,11 @@ public class RevenueReportFragment extends Fragment {
 
 
     public void getRevenueReport(boolean getAllRevenue, boolean todayRevenue, boolean yesterdayRevenue, boolean betweenRevenue) {
-
-
         final LoadingDialog dialog = new LoadingDialog(getActivity(), "Loading revenue report...");
         dialog.setCancelable(false);
         dialog.show();
         try {
-
             Single<RevenueReportResponse> apiRequest = null;
-
             RevenueReportRequest request = new RevenueReportRequest();
             request.setRestaurant_id(Constants.getStoredData(getActivity()).getRestaurant_id());
             request.setUser_id(Constants.getStoredData(getActivity()).getUser_id());
@@ -334,9 +322,7 @@ public class RevenueReportFragment extends Fragment {
                 request.setDate(Constants.getYesterdayDateString());
             else if (todayRevenue)
                 request.setDate(Constants.getCurrentDateString());
-
             ApiInterface apiService = ApiClient.getClient(getActivity()).create(ApiInterface.class);
-
             if (getAllRevenue) {
                 apiRequest = apiService.getRevenueReport(request);
             } else if (betweenRevenue) {

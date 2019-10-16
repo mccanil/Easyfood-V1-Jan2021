@@ -37,6 +37,7 @@ import com.lexxdigitals.easyfoodvone.orders.models.OrdersListResponse;
 import com.lexxdigitals.easyfoodvone.orders.models.OrdersRequest;
 import com.lexxdigitals.easyfoodvone.utility.ApplicationContext;
 import com.lexxdigitals.easyfoodvone.utility.Constants;
+import com.lexxdigitals.easyfoodvone.utility.Helper;
 import com.lexxdigitals.easyfoodvone.utility.LoadingDialog;
 import com.lexxdigitals.easyfoodvone.utility.UserPreferences;
 
@@ -77,15 +78,11 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
     RecyclerView recyclerviewOrders;
     Unbinder unbinder;
     private AdapterOrderList mAdapter;
-    private boolean isOpen = true;
     private Context mContext;
-    UserPreferences userPreferences;
     Context context;
     public static String limitFrom = "0";
     public static String limitTo = "100";
     SwipeRefreshLayout swipeRefreshLayout;
-    Spinner statusSpinner;
-    CompositeDisposable disposable;
 
     private static String[] toDayList;
     private static List<String> toDayDataList;
@@ -99,7 +96,7 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
     TextView btnAdd;
     int mMinutes = 0;
     int mHour = 0;
-    int minCHange=0;
+    int minCHange = 0;
 
     int itemPosition = 0;
     static OrderListFragment orderListFragment;
@@ -113,10 +110,6 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
     //TODO Loading first time ==
     boolean firstTimeLoading = true;
 
-    public static OrderListFragment newInstance() {
-
-        return orderListFragment;
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -138,10 +131,6 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
         orderListFragment = this;
     }
 
-    public void callFromActivity() {
-        Log.e("11111111", "11111111");
-        getNewOrder();
-    }
 
     @Nullable
     @Override
@@ -224,48 +213,6 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
             Toast.makeText(context, "Server not responding.", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
-    }
-
-    private void getNewOrder() {
-        try {
-            firstTimeLoading = false;
-            OrdersRequest request = new OrdersRequest();
-            request.setRestaurant_id(((LoginResponse.Data) UserPreferences.getUserPreferences().getResponse(context, Constants.LOGIN_RESPONSE)).getRestaurant_id());
-            request.setLimit(limitTo);
-            request.setOffset(limitFrom);
-            request.setStatus("new");
-
-            ApiInterface apiService = ApiClient.getClient(context).create(ApiInterface.class);
-            CompositeDisposable disposable = new CompositeDisposable();
-            disposable.add(apiService.getOrders(request)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<OrdersListResponse>() {
-                        @Override
-                        public void onSuccess(OrdersListResponse data) {
-                            if (data.isSuccess()) {
-                                tabAcceptedCount.setText(data.getData().getTotal_accepted_order() + "");
-                                tabRejectedCount.setText(data.getData().getTotal_rejected_order() + "");
-                                tabNewCount.setText(data.getData().getTotal_new_order() + "");
-                                OrdersListResponse.Orders newOrder = data.getData().getOrders().get(0);
-                                newOrder.setNewOrder(true);
-                                mAdapter.addItems(newOrder);
-
-                            }
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            Log.e("onError", "onError: " + e.getMessage());
-                        }
-                    }));
-
-        } catch (Exception e) {
-
-            Log.e("Exception ", e.toString());
-            e.printStackTrace();
-        }
-
     }
 
 
@@ -391,68 +338,49 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
         final TextView tvMessage = mDialogView.findViewById(R.id.message);
         btnRemove.setEnabled(false);
         btnAdd.setEnabled(false);
-//        tvMessage.setText(String.valueOf(orderDetail.getDelivery_date_time_label()));
-
-
-        //2019-06-15 13:54:56
+        tvMessage.setText(orderDetail.getDelivery_date_time());
         ProgressBar progressBar = mDialogView.findViewById(R.id.progressBar);
-
-        //2019-07-30 09:11:08
         getRestaurantClosingTimeByDate(progressBar, orderDetail.getRestaurant_id(), orderDetail.getDelivery_date_time());
-       // getRestaurantClosingTimeByDate(progressBar, orderDetail.getRestaurant_id(), orderDetail.getDelivery_date_time());
-
-//        txtResult.setText(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "mm"));
+        txtResult.setText(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm a", "mm"));
         txtResult.setText("0");
-        String dt=orderDetail.getDelivery_date_time();
-        String hr="",min="";
+        String dt = orderDetail.getDelivery_date_time();
+        String hr = "", min = "";
 
-        for (int i=0;i<dt.length();i++){
-            char c=dt.charAt(i);
-            if (c==' '){
-                hr=dt.substring(i+1,i+3);
+        for (int i = 0; i < dt.length(); i++) {
+            char c = dt.charAt(i);
+            if (c == ' ') {
+                hr = dt.substring(i + 1, i + 3);
             }
-            if (c==':'){
-                min=dt.substring(i+1,i+3);
+            if (c == ':') {
+                min = dt.substring(i + 1, i + 3);
                 break;
             }
         }
-        Log.e("dt",hr+" "+min);
+        Log.e("dt", hr + " " + min);
 
 
-//        String dddate=Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "dd MMMM, yyyy") + "\n" + Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "hh:mm");
-        String dddate=Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "dd MMMM, yyyy") + "\n";
+        String dddate = Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm a", "dd MMMM, yyyy") + "\n";
 
-        dddate=dddate+hr+":"+min;
-        tvMessage.setText(dddate);
-//        txtResult.setText(orderDetail.getAverage_delivery_time() + "");
 
-//        mMinutes = Integer.parseInt(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "mm"));
-//        mHour = Integer.parseInt(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "hh"));
-
-        mMinutes= Integer.parseInt(min);
-        mHour= Integer.parseInt(hr);
-
+        tvMessage.setText(orderDetail.getDelivery_date_time());
         btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (restaurantCloseMin > 0) {
-//                    if ((Integer.parseInt(txtResult.getText().toString()) - 5) > Integer.parseInt(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "mm"))) {
                     if ((Integer.parseInt(txtResult.getText().toString())) > 0) {
-                        minCHange=minCHange-5;
+                        minCHange = minCHange - 5;
                         txtResult.setText(String.valueOf(Integer.parseInt(txtResult.getText().toString()) - 5));
                         mMinutes = mMinutes - 5;
                         if (mMinutes < 5) {
                             mHour = mHour - 1;
                             mMinutes = mMinutes + 60;
-                            tvMessage.setText(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "dd MMMM, yyyy") + "\n" + new DecimalFormat("00").format(mHour) + ":" + new DecimalFormat("00").format(mMinutes));
+                            tvMessage.setText(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm a", "dd MMMM, yyyy") + "\n" + new DecimalFormat("00").format(mHour) + ":" + new DecimalFormat("00").format(mMinutes));
                         } else {
-                            tvMessage.setText(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "dd MMMM, yyyy") + "\n" + new DecimalFormat("00").format(mHour) + ":" + new DecimalFormat("00").format(mMinutes));
+                            tvMessage.setText(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm a", "dd MMMM, yyyy") + "\n" + new DecimalFormat("00").format(mHour) + ":" + new DecimalFormat("00").format(mMinutes));
                         }
 
                     }
                 }
-                /*if (Integer.parseInt(txtResult.getText().toString()) > orderDetail.getAverage_delivery_time())
-                    txtResult.setText(String.valueOf(Integer.parseInt(txtResult.getText().toString()) - 5));*/
             }
         });
 
@@ -463,18 +391,18 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
 
                 if (restaurantCloseMin > 0) {
 
-                    String checkTime=txtResult.getText().toString();
+                    String checkTime = txtResult.getText().toString();
                     if (restaurantCloseMin > (Integer.parseInt(checkTime) + 5)) {
-                        minCHange=minCHange+5;
+                        minCHange = minCHange + 5;
                         txtResult.setText(String.valueOf(Integer.parseInt(txtResult.getText().toString()) + 5));
                         mMinutes = mMinutes + 5;
                         if (mMinutes >= 60) {
                             mHour = mHour + (mMinutes / 60);
                             mMinutes = mMinutes % 60;
-                            String setTime=Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "dd MMMM, yyyy") + "\n" + new DecimalFormat("00").format(mHour) + ":" + new DecimalFormat("00").format(mMinutes);
+                            String setTime = Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm a", "dd MMMM, yyyy") + "\n" + new DecimalFormat("00").format(mHour) + ":" + new DecimalFormat("00").format(mMinutes);
                             tvMessage.setText(setTime);
                         } else {
-                            String setTime2=Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "dd MMMM, yyyy") + "\n" + new DecimalFormat("00").format(mHour) + ":" + new DecimalFormat("00").format(mMinutes);
+                            String setTime2 = Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm a", "dd MMMM, yyyy") + "\n" + new DecimalFormat("00").format(mHour) + ":" + new DecimalFormat("00").format(mMinutes);
                             tvMessage.setText(setTime2);
                         }
 
@@ -482,8 +410,6 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
                 }
 
 
-                /*if (Integer.parseInt(txtResult.getText().toString()) < 90)
-                    txtResult.setText(String.valueOf(Integer.parseInt(txtResult.getText().toString()) + 5));*/
             }
         });
 
@@ -491,9 +417,6 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
             @Override
             public void onClick(View v) {
                 mDialog.dismiss();
-                String orderDate = Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "yyyy-MM-dd");
-                String orderTime = Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "hh");
-                String orderMinutes = Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "mm");
 
 
                 try {
@@ -501,58 +424,14 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-/*
-                int hrs = 0;
-                int minutes = 0;
-                int intOrdertime = 0;
-
-                try {
-                    hrs = Integer.parseInt(orderTime);
-                    minutes = Integer.parseInt(txtResult.getText().toString());
-                    minutes = minutes + Integer.parseInt(orderMinutes);
-
-                    if (minutes >= 60) {
-                        hrs = hrs + (minutes / 60);
-                        minutes = minutes % 60;
-                    }
-                } catch (NumberFormatException e) {
-                    Log.e("NumberFormatException", e.toString());
-                }
-
-                Log.e("time", orderDate + " " + String.valueOf(intOrdertime + ":") + "" + String.valueOf(minutes) + ":00");*/
-//                String orderDateTime = orderDate + " " + orderTime + "" + txtResult.getText().toString() + ":00";
-
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                //Date date2=new Date(orderDetail.getDelivery_date_time());
-                Date date = null;
-                try {
-                    date = sdf.parse(orderDetail.getDelivery_date_time());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(date);
-                //calendar.add(Calendar.HOUR, mHour);
-                calendar.add(Calendar.MINUTE, minCHange);
-                String orderDelTime= String.valueOf(sdf.format(calendar.getTime()));
-//                try {
-//                   // date = sdf.format(calendar.getTime());
-//                   // orderDelTime= String.valueOf(date);
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-
-                Log.e("orderDelTime",orderDelTime);
-
-                String orderDateTime = orderDate + " " + String.valueOf(mHour + ":") + "" + String.valueOf(mMinutes) + ":00";
-                acceptRejectOrder("accepted", orderDetail, orderDelTime, "", mPosition);
+                acceptRejectOrder("accepted", orderDetail, orderDetail.getDelivery_date_time(), "", mPosition);
 
             }
         });
         mDialogView.findViewById(R.id.btn_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                minCHange=0;
+                minCHange = 0;
                 mDialog.dismiss();
 
             }
@@ -612,12 +491,7 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
                     if (selectPos == 0) {
                         Toast.makeText(mContext, "Please select rejection reason", Toast.LENGTH_SHORT).show();
                     } else {
-                        mMinutes = Integer.parseInt(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "mm"));
-                        mHour = Integer.parseInt(Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "hh"));
-                        String orderDate = Constants.getDateFromDateTime(orderDetail.getDelivery_date_time(), "yyyy-MM-dd hh:mm:ss", "yyyy-MM-dd");
-                        String orderDateTime = orderDate + " " + String.valueOf(mHour + ":") + "" + String.valueOf(mMinutes) + ":00";
-                        Log.e("rejected", orderDate + "," + orderDateTime);
-                        acceptRejectOrder("rejected", orderDetail, orderDateTime, notes.getText().toString(), position);
+                        acceptRejectOrder("rejected", orderDetail, orderDetail.getDelivery_date_time(), notes.getText().toString(), position);
                         mDialog.dismiss();
 
                     }
@@ -650,7 +524,7 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
         dialog.setCancelable(false);
         dialog.show();
         try {
-            minCHange=0;
+            minCHange = 0;
             AcceptRejectOrderRequest request = new AcceptRejectOrderRequest();
             request.setCustomer_id(orderDetail.getCustomer_id());
             request.setOrder_number(orderDetail.getOrder_num());
@@ -744,12 +618,7 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
                             if (data.isSuccess()) {
                                 getAllOrders("accepted", whichTabActive);
                                 Toast.makeText(getActivity(), "Successful", Toast.LENGTH_LONG).show();
-
-//                                mAdapter.notifyDataSetChanged();
-
-
                             } else {
-                                //alertDialog(data.getMessage());
                                 Toast.makeText(getActivity(), "Unsuccessful", Toast.LENGTH_LONG).show();
 
                             }
@@ -788,11 +657,9 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 toDay = (String) parent.getItemAtPosition(position);
 
-
                 if (position > 0) {
                     String time;
                     String date = toDayDataList.get(position - 1).substring(0, 10);
-                    String formatData = Constants.changeStringDateFormat(date, "yyyy-MM-dd", "dd-MM-yyyy");
                     time = toDayDataList.get(position - 1).substring(11, toDayDataList.get(position - 1).length());
                     deliveryDateTime = date + " " + time.substring(6) + ":00";
                     Log.e("item", toDay + ", " + time + "," + toDayDataList.get(position) + ", " + deliveryDateTime);
@@ -809,68 +676,6 @@ public class OrderListFragment extends Fragment implements AdapterOrderList.OnIt
 
     }
 
-    public void getDeliveryTimeSlot(String restaurantId, String delivery_date_time) {
-        progressBar.setVisibility(View.VISIBLE);
-        try {
-            TimeSlotRequest request = new TimeSlotRequest(restaurantId, delivery_date_time);
-            ApiInterface apiService = ApiClient.getClient(getActivity()).create(ApiInterface.class);
-            CompositeDisposable disposable = new CompositeDisposable();
-            disposable.add(apiService.getDeliveryTimeSlot(request)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<TimeSlotResponse>() {
-                        @Override
-                        public void onSuccess(TimeSlotResponse data) {
-                            progressBar.setVisibility(View.GONE);
-                            if (data.getSuccess()) {
-
-                                int size = 0;
-                                if (data.getData().getToday() != null && data.getData().getToday().size() > 0) {
-                                    size = data.getData().getToday().size();
-                                }
-
-                                toDayDataList = data.getData().getToday();
-
-                                dateTimeDataList = new ArrayList<>();
-                                dateTimeDataList.addAll(data.getData().getToday());
-
-
-                                toDayList = new String[(size + 1)];
-                                toDayList[0] = "Select Delivery Time";
-
-                                int i;
-                                for (i = 0; i < data.getData().getToday().size(); i++) {
-                                    String data1 = data.getData().getToday().get(i);
-                                    if (data1 != null) {
-
-                                        String dateString = data1.substring(0, 10).replace("-", "/");
-
-
-                                        String[] str = data1.split(" ");
-                                        if (str.length >= 2) {
-                                            toDayList[(i + 1)] = str[1] + " (" + Constants.getDayMonth(dateString) + " )";
-                                        }
-                                    }
-                                }
-                                deliveryTimeSlotinitView();
-                            }
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            progressBar.setVisibility(View.GONE);
-                            Log.e("onError", "onError: " + e.getMessage());
-                        }
-                    }));
-
-        } catch (Exception e) {
-            progressBar.setVisibility(View.GONE);
-            Log.e("Exception ", e.toString());
-            Toast.makeText(getActivity(), "Server not responding.", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
-
-    }
 
     public void getRestaurantClosingTimeByDate(final ProgressBar progressBar, String restaurantId, final String delivery_date_time) {
         progressBar.setVisibility(View.VISIBLE);

@@ -35,6 +35,7 @@ import android.widget.Toast;
 import com.lexxdigitals.easyfoodvone.R;
 import com.lexxdigitals.easyfoodvone.api_handler.ApiClient;
 import com.lexxdigitals.easyfoodvone.api_handler.ApiInterface;
+import com.lexxdigitals.easyfoodvone.charity.CharityFragment;
 import com.lexxdigitals.easyfoodvone.fragments.ChangePasswordFragment;
 import com.lexxdigitals.easyfoodvone.fragments.DeleverySettingFragment;
 import com.lexxdigitals.easyfoodvone.fragments.ListOfOffersFragment;
@@ -59,6 +60,7 @@ import com.lexxdigitals.easyfoodvone.utility.ApplicationContext;
 import com.lexxdigitals.easyfoodvone.utility.Constants;
 import com.lexxdigitals.easyfoodvone.utility.LoadingDialog;
 import com.lexxdigitals.easyfoodvone.utility.UserPreferences;
+import com.newrelic.agent.android.NewRelic;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -71,6 +73,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.lexxdigitals.easyfoodvone.utility.Helper.setFragment;
 
 
 public class OrdersActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -101,9 +105,12 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
     ServeStyleResponse serveStyleResponse;
     Dialog dialog;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
-
+    ImageView ivNav;
     Toolbar toolbar;
+    TextView tvToolbarTitle;
     DrawerLayout drawer;
+    private static OrdersActivity instance = null;
+    int fragCount = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,37 +118,53 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
         Constants.setStatusBarGradiant(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        instance = this;
         setContentView(R.layout.activity_orders);
+        NewRelic.withApplicationToken(
+                "eu01xx8e8c3e4790f9795fc7133941ac935ff9a204"
+        ).start(this.getApplication());
         ButterKnife.bind(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(null);
         setSupportActionBar(toolbar);
-
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setTitle(null);
         restaurant_name = findViewById(R.id.restaurant_name);
         restaurant_logo = findViewById(R.id.restaurant_logo);
         serve_style = findViewById(R.id.serve_style);
         postal_code = findViewById(R.id.post_code);
-
+        tvToolbarTitle = findViewById(R.id.tv_toolbar_title);
+        ivNav = findViewById(R.id.iv_nav);
         serveStyleResponse = new ServeStyleResponse();
         baseDetails = (LoginResponse.Data) UserPreferences.getUserPreferences().getResponse(this, Constants.LOGIN_RESPONSE);
 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        ivNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (drawer.isDrawerOpen(GravityCompat.END)) {
+                    drawer.closeDrawer(GravityCompat.END);
+                } else {
+                    drawer.openDrawer(GravityCompat.END);
+                }
+            }
+        });
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
         ImageView navCancel = (ImageView) headerView.findViewById(R.id.back_menu);
 
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        // toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toggle = new ActionBarDrawerToggle(this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
         drawer.setDrawerListener(toggle);
-
         toggle.syncState();
 
         if (getIntent().hasExtra(Constants.NOTIFICATION_TYPE_ACCEPTED)) {
@@ -165,7 +188,7 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
         navCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDrawerLayout.closeDrawer(Gravity.START);
+                mDrawerLayout.closeDrawer(Gravity.END);
             }
         });
 
@@ -255,6 +278,15 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
 
         setRestaurantDetails();
 
+    }
+
+    public static OrdersActivity getInstance() {
+        return instance;
+    }
+
+
+    public void setBackAction(int backNo) {
+        fragCount = backNo;
     }
 
     private void getServeStyle() {
@@ -482,7 +514,9 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.VISIBLE);
             layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Orders");
+            tvToolbarTitle.setText("Orders");
+            //  ab.setTitle("Orders");
+
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new OrderListFragment(getApplicationContext()));
             ft.commit();
@@ -491,7 +525,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.VISIBLE);
             layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Menu");
+            //ab.setTitle("Menu");
+            tvToolbarTitle.setText("Menu");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new MenuFragment(getApplicationContext()));
             ft.commit();
@@ -501,7 +536,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.GONE);
             layoutRestaurentNameLogo.setVisibility(View.GONE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Set Delivery Charges");
+            // ab.setTitle("Set Delivery Charges");
+            tvToolbarTitle.setText("Set Delivery Charges");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new DeleverySettingFragment(getApplicationContext(), OrdersActivity.this));
             ft.commit();
@@ -511,7 +547,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.VISIBLE);
             layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Set Restaurant Timings");
+            // ab.setTitle("Set Restaurant Timings");
+            tvToolbarTitle.setText("Set Restaurant Timings");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new SetRestaurantTimingsFragment(OrdersActivity.this));
             ft.commit();
@@ -521,7 +558,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.VISIBLE);
             layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Orders Report");
+            //ab.setTitle("Orders Report");
+            tvToolbarTitle.setText("Orders Report");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new OrderReportFragment(getApplicationContext(), OrdersActivity.this));
             ft.commit();
@@ -531,7 +569,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.VISIBLE);
             layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Revenue Report");
+            //ab.setTitle("Revenue Report");
+            tvToolbarTitle.setText("Revenue Report");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new RevenueReportFragment(getApplicationContext(), OrdersActivity.this));
             ft.commit();
@@ -541,7 +580,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.VISIBLE);
             layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("List of Offers");
+            //ab.setTitle("List of Offers");
+            tvToolbarTitle.setText("List of Offers");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new ListOfOffersFragment(getApplicationContext(), OrdersActivity.this));
             ft.commit();
@@ -551,9 +591,21 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.VISIBLE);
             layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Ratings & Reviews");
+            // ab.setTitle("Ratings & Reviews");
+            tvToolbarTitle.setText("Ratings & Reviews");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new RatingReviewFragment(getApplicationContext(), OrdersActivity.this));
+            ft.commit();
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        } else if (id == R.id.nav_charity) {
+            isDashBoard = false;
+            layoutDeleveryOnOff.setVisibility(View.GONE);
+            layoutRestaurentNameLogo.setVisibility(View.GONE);
+            ActionBar ab = getSupportActionBar();
+            // ab.setTitle("Charity");
+            tvToolbarTitle.setText("Charity");
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout, new CharityFragment(getApplicationContext(), OrdersActivity.this));
             ft.commit();
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         } else if (id == R.id.nav_profile) {
@@ -561,7 +613,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.VISIBLE);
             layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Your Profile");
+            // ab.setTitle("Your Profile");
+            tvToolbarTitle.setText("Your Profile");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new ProfileFragment(getApplicationContext(), OrdersActivity.this));
             ft.commit();
@@ -571,7 +624,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             layoutDeleveryOnOff.setVisibility(View.GONE);
             layoutRestaurentNameLogo.setVisibility(View.GONE);
             ActionBar ab = getSupportActionBar();
-            ab.setTitle("Change Password");
+            //ab.setTitle("Change Password");
+            tvToolbarTitle.setText("Change Password");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frameLayout, new ChangePasswordFragment(getApplicationContext(), OrdersActivity.this));
             ft.commit();
@@ -586,7 +640,7 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.END);
         return true;
     }
 
@@ -638,7 +692,8 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
 
     private void loadFragment(OrderListFragment fragment) {
         ActionBar ab = getSupportActionBar();
-        ab.setTitle("Orders");
+        //ab.setTitle("Orders");
+        tvToolbarTitle.setText("Orders");
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameLayout, fragment);
         ft.commit();
@@ -734,14 +789,23 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
             dialog.show();
 
         } else {
-            isDashBoard = true;
-            layoutDeleveryOnOff.setVisibility(View.VISIBLE);
-            layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
-            ActionBar ab = getSupportActionBar();
-            ab.setTitle("Orders");
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.frameLayout, new OrderListFragment(getApplicationContext()));
-            ft.commit();
+
+            if (fragCount > 1) {
+                CharityFragment.getInstance().getCharityInfo();
+                CharityFragment successFragment = new CharityFragment();
+                setFragment(successFragment, false, this, R.id.frameLayout);
+
+            } else {
+                isDashBoard = true;
+                layoutDeleveryOnOff.setVisibility(View.VISIBLE);
+                layoutRestaurentNameLogo.setVisibility(View.VISIBLE);
+                ActionBar ab = getSupportActionBar();
+                //ab.setTitle("Orders");
+                tvToolbarTitle.setText("Orders");
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.frameLayout, new OrderListFragment(getApplicationContext()));
+                ft.commit();
+            }
 
         }
 

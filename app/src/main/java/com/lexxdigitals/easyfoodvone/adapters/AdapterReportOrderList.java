@@ -75,10 +75,6 @@ public class AdapterReportOrderList extends RecyclerView.Adapter<AdapterReportOr
                 i.putExtra("order_number", order_list.get(position).getOrder_id());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(i);
-               /* Intent in = new Intent(mContext, OrderRepostDetailActivity.class);
-                in.putExtra("key",order_list.get(position).getOrder_id());
-                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in);*/
             }
         });
 

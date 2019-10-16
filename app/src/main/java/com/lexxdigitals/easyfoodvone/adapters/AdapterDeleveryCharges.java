@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,7 +25,6 @@ public class AdapterDeleveryCharges extends RecyclerView.Adapter<AdapterDelevery
     private Activity mActivity;
     List<DeleverySettingResponse.Data> deleverySetting;
     OnAdapterItemClickListener onAdapterItemClickListener;
-
 
 
     public interface OnAdapterItemClickListener {
@@ -73,56 +70,35 @@ public class AdapterDeleveryCharges extends RecyclerView.Adapter<AdapterDelevery
 
         deleverySetting.remove(position);
         notifyItemChanged(position);
-//        locationList.remove(position);
-//        notifyItemRemoved(position);
-//        notifyItemRangeChanged(position, locationList.size());
     }
 
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         mHolder = holder;
-        // holder.txtPostCode.setText("BH"+ ++count);
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onAdapterItemClickListener.onEditClick(position, deleverySetting.get(position), holder);
-//                alertDialog("Enter the delivery charges for "+holder.txtPostCode.getText().toString().trim()+" postcode within 6 miles of radius for deliveries",position,deleverySetting.get(position),holder);
             }
         });
         holder.btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 onAdapterItemClickListener.ondeleteClick(position, deleverySetting.get(position), holder);
-//                alertDialogSingle("You have deleted "+holder.txtPostCode.getText().toString().trim()+" postcode successfully.");
             }
         });
         holder.txtPostCode.setText(deleverySetting.get(position).getPost_code());
         holder.txtMinOrderVal.setText("£" + deleverySetting.get(position).getMin_order_value());
         holder.txtDeleveryCharge.setText("£" + deleverySetting.get(position).getDelivery_charge());
         holder.txtFreeDelivery.setText("£" + deleverySetting.get(position).getFree_delivery());
-
-        //  setAnimation(holder.itemView, position);
     }
 
     @Override
     public int getItemCount() {
-
         return deleverySetting.size();
     }
 
-    /**
-     * Here is the key method to apply the animation
-     */
-    private void setAnimation(View viewToAnimate, int position) {
-        // If the bound view wasn't previously displayed on screen, it's animated
-        if (position > lastPosition) {
-            Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
-            viewToAnimate.startAnimation(animation);
-            lastPosition = position;
-        }
-    }
 
     public void alertDialog(String msg, final int position, final DeleverySettingResponse.Data data, final MyViewHolder holder) {
         LayoutInflater factory = LayoutInflater.from(mContext);
@@ -143,14 +119,11 @@ public class AdapterDeleveryCharges extends RecyclerView.Adapter<AdapterDelevery
                 mDialog.dismiss();
 
 
-//                updatePostCode(Constants.getStoredData(mContext).getRestaurant_id(), Constants.getStoredData(mContext).getPost_code(),
-//                        etMinOrderValue.getText().toString(), etDeliveryCharge.getText().toString(),etFreeDelivery.getText().toString() );
             }
         });
         mDialogView.findViewById(R.id.btn_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //your business logic
                 mDialog.dismiss();
             }
         });

@@ -37,6 +37,43 @@
     <string name="view_order">View Order</string>
     <string name="toast_2">The service has been disconnected</string>
 
+    <!--Created by Omnisttechhub Solution-->
+    <string name="no_internet_available_msg">No internet connection available</string>
+    <string name="msg_please_try_later">Something went wrong. Please try later!</string>
+
+    <string name="meals_target">Meals Target</string>
+    <string name="meals_donated">Meals Donated</string>
+    <string name="donate_meals">Donate meals</string>
+    <string name="previous_donation">Previous Donations</string>
+    <string name="cancel">Cancel</string>
+    <string name="accepted">Accepted</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="food_collected_by_charity">Food collected by charity?</string>
+    <string name="collected">Collected</string>
+    <string name="book_a_charity_collection">Book a charity collection</string>
+    <string name="how_many_meals_like_to_donate">How many meals would you like to donate?</string>
+    <string name="when_will_meal_be_ready_to_collect">When will these meals be ready to collect?</string>
+    <string name="please_allow_plenty_of_time_for_local_to_reach">Please allow plenty of time for the local charity to reach your restaurant</string>
+    <string name="donate_now">Donate now</string>
+    <string name="enter_no_meal">Enter No. of meals</string>
+    <string name="not_collected">Not Collected</string>
+    <string name="please_enter_no_of_meals">Please enter no of meals.</string>
+    <string name="please_enter_valid_no_of_meals">Please enter valid no of meals.</string>
+    <string name="are_you_sure_you_want_to_cancel">Are you sure you want to\ncancel your donation?</string>
+    <string name="cancel_dialog_msg">By donating any left over meals which your restaurant\nhas at the end of service, you’ll be helping to feed the\nmost needy in society. \nAre you sure you want to cancel your charitable\ndonation?</string>
+    <string name="ok">Ok</string>
+    <string name="cancel_sucees_dialog_msg">Meal donations are desperately required by local charities to\nhelp feed those in need.\nWe hope you’ll continue to support our mission to help to\nfeed the homeless, reduce food waste and to cut green house\ngasses in the environment.</string>
+    <string name="your_donation_cancelled">Your charitable food\ndonation has been cancelled</string>
+    <string name="thank_you">Thank you.</string>
+
+    <string name="we_have_now_alerted_local">We have now alerted local\ncharities about your available meals.</string>
+    <string name="doantion_sucess_msg">Should any local charities accept your , we’ll\n send a notification to your device.\nThank you again for donating your meals and for helping\n us to feed those in need.</string>
+    <string name="please_select_time">Please select time.</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="meals">Meals</string>
+    <string name="register">Register</string>
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
     <string-array name="ratings_arrays">
         <item>All Star</item>
         <item>One Star</item>
@@ -49,5 +86,20 @@
     <string-array name="profile_arrays">
         <item>* Select Restaurant Type</item>
     </string-array>
+
+    <!--Created by Omnisttechhub Solution-->
+    <string-array name="donation_time">
+        <item>0-1</item>
+        <item>1-2</item>
+        <item>2-3</item>
+        <item>3-4</item>
+        <item>4-5</item>
+        <item>5-6</item>
+        <item>6-7</item>
+        <item>7-8</item>
+        <item>9-10</item>
+        <item>0-10</item>
+    </string-array>
+    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 
 </resources>

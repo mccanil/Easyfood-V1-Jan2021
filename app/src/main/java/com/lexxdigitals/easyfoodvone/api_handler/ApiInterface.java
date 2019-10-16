@@ -125,17 +125,6 @@ public interface ApiInterface {
 
     @POST(ApiConstants.DELETE_POSTCODE_DELIVERY_TIME)
     Single<DeletePostCodeDeliveryTimeResponse> deletePostCodeDeliveryTime(@Body DeletePostCodeDeliveryTimeRequest deletePostCodeDeliveryTimeRequest);
-    /*@POST(ApiConstants.ACTIVE_DEACTIVE_MENU_PRODUCT)
-    Single<MenuCategoryItemsResponse> activeDeactiveMenuProduct(@Body CommonRequest request);
-
-    @POST(ApiConstants.ACTIVE_DEACTIVE_MENU)
-    Single<CommonResponse> activeDeactiveMenu(@Body CommonRequest request);
-
-    @POST(ApiConstants.UPDAET_MENU_CATEGORY)
-    Single<CommonResponse> updateMenuCategory(@Body UpdateMenuCategoryRequest request);
-
-    @POST(ApiConstants.UPDATE_MENU_PRODUCT)
-    Single<CommonResponse> updateMenuProduct(@Body UpdateMenuProductRequest request);*/
 
     @POST(ApiConstants.OFFER_X_SPEND_X_DISCOUNT)
     Single<CommonResponse> createSpendXGetXDiscount(@Body SpendXgetXdiscountRequest request);
