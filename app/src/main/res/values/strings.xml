@@ -1,105 +1,207 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Easy Food</string>
-
-    <!--**********************************Signin Activity************************************-->
     <string name="currency">\u00a3</string>
 
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="contact_support">Contact Support</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="forgot_your_password">Forgot your password</string>
-    <string name="forgot_text">Enter the email address associated with your account and we\'ll help you for resetting your password.</string>
-    <string name="enter_your_email_address">Enter your email address</string>
-    <string name="text_contact_support">Please tell us your issue and one of our representatives will call you.</string>
-    <string name="type_message">Type your message</string>
-    <string name="title_activity_orders">Orders</string>
-    <string name="title_activity_menu">Menu</string>
-    <string name="title_activity_menu_details">Menu Details</string>
-    <string name="title_activity_new_orders">New Order</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_test_main">TestMainActivity</string>
-    <string name="average_time_for_delivery">Average time for delivery:</string>
+
+   <!-- <string name="facebook_app_id">2246223352155867</string>
+    <string name="fb_login_protocol_scheme">fb2246223352155867</string>-->
+
+
+    <string name="facebook_app_id">535154387295634</string>
+    <string name="fb_login_protocol_scheme">fb535154387295634</string>
+
+
+
+    <string name="geo_api_key">AIzaSyBOkNBvcKrG2iwG6b1kP2-fIBOzHZjfqFM</string>
+
+
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="please_enter_your_email_address_below_to_reveive_an_email_instruction_for_resetting_your_password">Please enter your email \naddress below to receive an\nemail instruction for resetting\nyour password.</string>
+    <string name="email">Email</string>
+    <string name="email_required">Email (required)</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="submit">SUBMIT</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="sorry_we_don_t_currently_deliver_in_your_area">Sorry, we don’t currently deliver in your area</string>
+    <string name="add_note">Add note</string>
+    <string name="No_items_added">No items added</string>
+    <string name="your_basket_is_empty_add_items_to_your_order_before_accessing_your_basket">Your basket is empty. Please add items to you order to view your basket</string>
+    <string name="are_you_sure_you_want_to_remove_this_address">Are you sure, you want to remove this address?</string>
+    <string name="voucher_code_n_has_now_expired">Voucher code has now expired</string>
+    <string name="unfortunately_discount_code_has_expired_please_try_again_with_a_valid_code">Unfortunately [Discount Code] has expired. Please try again with a valid code.</string>
+    <string name="voucher_code_is_invalid">Voucher code is invalid</string>
+    <string name="unfortunately_discount_code_is_invalid_please_try_again_with_a_valid_code">Unfortunately [Discount Code] is invalid. Please try again with a valid code.</string>
+    <string name="voucher_code_has_been_accepted">Voucher code has been accepted</string>
+    <string name="great_discount_code_has_been_accepted_and_applied_to_your_order">Great! [Discount Code] has been accepted and applied to your order.</string>
+    <string name="are_you_sure_you_want_to_remove_this_favourite">Are you sure, you \n want to remove?</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="mpin">Please enter 4 digit pin code\nto view item details</string>
-    <string name="title_spend_x_get_discount_x">Spend X Get X% Discount</string>
-    <string name="title_flat_iscount_mount_ffer">Flat Discount Amount Offer</string>
-    <string name="title_discount_offer_with_percentage">Discount Offer With %</string>
-    <string name="title_combo_meal_offer">Create Combo Meals Offer</string>
-    <string name="view_order">View Order</string>
-    <string name="toast_2">The service has been disconnected</string>
+    <string name="food_allergy_or_intolerance_information">Food allergy or\nintolerance information</string>
+    <string name="tab_to_call">Tap to Call</string>
+    <string name="unfortunately_your_order_was_rejected_by_the_restaurant">Unfortunately your order was rejected by the restaurant</string>
+    <string name="search_again">Search again</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="cardno">XXXX    XXXX     XXXX   8990</string>
+    <string name="dialog_header">Your first easyFood order</string>
+    <string name="dialog_des">Your first easyFood order</string>
+    <string name="location_header">Enable current location</string>
+    <string name="signup">Sign Up</string>
+    <string name="pin">Enter 4 digital code</string>
+    <string name="pass">Create password</string>
+    <string name="re_pass">Re-enter password</string>
+    <string name="search">Search by postcode</string>
+    <string name="home">Home</string>
+    <string name="allow_des">To make finding local restaurants easiler and to bring you the best deals we would like to use your current location</string>
+    <string name="sign_up_dis">Please check your text messages for phone number ending 2863 and enter the vaification code</string>
+    <string name="dis">For your security, yBecause you are placing your first order with us, you are required to pay for this by debit or credit card.\n
+This is only required for your first order and any furture orders may be paid in cash.\n
+This is a security measure to protect both parties from fraudulent orders.
 
-    <!--Created by Omnisttechhub Solution-->
-    <string name="no_internet_available_msg">No internet connection available</string>
-    <string name="msg_please_try_later">Something went wrong. Please try later!</string>
-
-    <string name="meals_target">Meals Target</string>
-    <string name="meals_donated">Meals Donated</string>
-    <string name="donate_meals">Donate meals</string>
-    <string name="previous_donation">Previous Donations</string>
-    <string name="cancel">Cancel</string>
+ou will be sent a varification code to your mobile </string>
+    <string name="internetdes">The page you are looking for is temporarily unavailable</string>
+    <string name="oops_string">Oops something went wrong!</string>
+    <string name="close">Close</string>
+    <string name="your_meal_is_now_on_it_s_way_to_you_and_will_be_with_you_very_soon">Your meal is now on it’s way to you and will be with you very soon.</string>
+    <string name="order_status">Your order is on the way</string>
     <string name="accepted">Accepted</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="food_collected_by_charity">Food collected by charity?</string>
-    <string name="collected">Collected</string>
-    <string name="book_a_charity_collection">Book a charity collection</string>
-    <string name="how_many_meals_like_to_donate">How many meals would you like to donate?</string>
-    <string name="when_will_meal_be_ready_to_collect">When will these meals be ready to collect?</string>
-    <string name="please_allow_plenty_of_time_for_local_to_reach">Please allow plenty of time for the local charity to reach your restaurant</string>
-    <string name="donate_now">Donate now</string>
-    <string name="enter_no_meal">Enter No. of meals</string>
-    <string name="not_collected">Not Collected</string>
-    <string name="please_enter_no_of_meals">Please enter no of meals.</string>
-    <string name="please_enter_valid_no_of_meals">Please enter valid no of meals.</string>
-    <string name="are_you_sure_you_want_to_cancel">Are you sure you want to\ncancel your donation?</string>
-    <string name="cancel_dialog_msg">By donating any left over meals which your restaurant\nhas at the end of service, you’ll be helping to feed the\nmost needy in society. \nAre you sure you want to cancel your charitable\ndonation?</string>
-    <string name="ok">Ok</string>
-    <string name="cancel_sucees_dialog_msg">Meal donations are desperately required by local charities to\nhelp feed those in need.\nWe hope you’ll continue to support our mission to help to\nfeed the homeless, reduce food waste and to cut green house\ngasses in the environment.</string>
-    <string name="your_donation_cancelled">Your charitable food\ndonation has been cancelled</string>
-    <string name="thank_you">Thank you.</string>
+    <string name="prepared">Preparing</string>
+    <string name="on_the_way">On the way</string>
+    <string name="delivered">Delivered</string>
+    <string name="call_restaurant">Call restaurant</string>
+    <string name="order_progress">Your order progress</string>
+    <string name="dont_recive">Didn’t receive it? Send again</string>
+    <string name="my_saved_cards">My Saved Cards</string>
+    <string name="card_holder">CARD HOLDER</string>
+    <string name="currently_you_have_no_cards_saved_add_your_debit_or_credit_cardsfor_faster_payments">You have no payment cards saved.\nAdd your debit or credit cards\nfor faster payments.</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="name_on_card">Name on Card</string>
+    <string name="card_number">Card Number</string>
+    <string name="billing_postcode">Billing Postcode</string>
+    <string name="cvc">CVC</string>
+    <string name="expiry_date">Expiry date</string>
+    <string name="confirm">Confirm</string>
 
-    <string name="we_have_now_alerted_local">We have now alerted local\ncharities about your available meals.</string>
-    <string name="doantion_sucess_msg">Should any local charities accept your , we’ll\n send a notification to your device.\nThank you again for donating your meals and for helping\n us to feed those in need.</string>
-    <string name="please_select_time">Please select time.</string>
-    <string name="cancelled">Cancelled</string>
-    <string name="meals">Meals</string>
-    <string name="register">Register</string>
-    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
-    <string-array name="ratings_arrays">
-        <item>All Star</item>
-        <item>One Star</item>
-        <item>Two Star</item>
-        <item>Three Star</item>
-        <item>Four Star</item>
-        <item>Five Star</item>
-    </string-array>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="forgot_password_reset">Forgot password? Reset</string>
+    <string name="log_in_with_facebook">Log in with Facebook</string>
+    <string name="log_in_with_google">Log in with Google</string>
+    <string name="don_t_have_an_account_create_account">Don’t have an account? Create Account</string>
+    <string name="spencer_easyfood_co_uk">spencer@easyfood.co.uk</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="click_the_link_below_to_review_our_privacy_policy_regarding_the_collection_of_device_information_in_connection_with_the_use_of_this_app">Click the link below to review our Privacy Policy regarding the collection of device information in connection with the use of this app.</string>
+    <string name="privacypolicy">Privacy Policy</string>
+    <string name="forgat_pass">Forgot Password</string>
+    <string name="pound">\u00a3</string>
+    <string name="easyfood_will_receive_your_name_and_email_address">easyFood will receive: your name and email address.</string>
+    Currently you have no cards saved. Add your debit or credit cardsfor faster payments.
+    <string name="easyfood">easyFood</string>
+    <string name="continue_as_spencer">Continue as Spencer</string>
+    <string name="do_you_have_an_allergy_tap_for_info">Do you have an allergy? Tap for info</string>
+    <string name="do_you_want_to_remove_those_and_start_a_new_order_with">Do you want to remove those and start a new order with</string>
+    <string name="big_burger">Big Burger</string>
+    <string name="total">TOTAL</string>
+    <string name="checkout_now">Checkout now</string>
+    <string name="room_for_more">Room for more?</string>
+    <string name="frank_s_hot_sauce_chicken_wings_3_x_fried_chicken_wings_in_franks_hot_sauce">Frank’s Hot Sauce Chicken Wings 3 x fried chicken wings in Franks hot sauce</string>
+    <string name="add_voucher_code">Add Voucher Code</string>
+    <string name="add_a_note_to_the_restaurant">Add a note to your order</string>
+    <string name="collect_from_this_restaurant">Collect from this restaurant</string>
+    <string name="view_map">View map</string>
+    <string name="your_basket_is_empty">Your basket is empty</string>
+    <string name="special_offers">Special Offers</string>
+    <string name="add_more_favou">Add More Favourites</string>
+    <string name="details">Details</string>
+    <string name="order_again">Order again</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="RestaurantsorCuisine">Restaurants</string>
+    <string name="my_account">My Account</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="Manage_Address">Manage Address</string>
+    <string name="list_of_addresses">List of Addresses</string>
+    <string name="AddNewAddress">Add New Address</string>
+    <string name="payments">Payments</string>
+    <string name="credit_card">My Credit/Debit Cards</string>
+    <string name="add_new_credit_debit_card">Add New Credit/Debit Card</string>
+    <string name="my_basket">My Basket</string>
+    <string name="my_orders">My Orders</string>
+    <string name="favourites">Favourites</string>
+    <string name="Privacy_Policy">Privacy Policy</string>
+    <string name="faq">FAQ</string>
+    <string name="help">Help</string>
+    <string name="log_out">Log out</string>
+    <string name="select_order_type" tools:ignore="ExtraTranslation">Please select order type</string>
+    <string name="title_activity_add_new_card">AddNewCardActivity</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="large_text">Material is the metaphor.    </string>
+    <string name="action_settings">Settings</string>
+    <string name="marketing_communicatio_desc">We’d like to send you discount coupons,\nexclusive offers and promotions\nby email, SMS and push notifications.\n\nYou can change these prefrerences\nanytime within this app.</string>
+    <string name="empty_favourites_desc">You haven’t added any of your\nfavourite restaurants yet.\n\nOnce you select them, they\nwill appear here.</string>
+    <string name="empty_myorder_desc">You haven’t placed any order yet. Your placed orders will appear here.</string>
+    <string name="title_activity_restaurant_detail_new">RestaurantDetailNewActivity</string>
+    <string name="title_activity_test_scrolling">TestScrollingActivity</string>
 
-    <string-array name="profile_arrays">
-        <item>* Select Restaurant Type</item>
-    </string-array>
+    <string name="restaurant_call_details">If you or someone you’re ordering for has a food allergy or intolerance, we recommend you phone the restaurant on </string>
 
-    <!--Created by Omnisttechhub Solution-->
-    <string-array name="donation_time">
-        <item>0-1</item>
-        <item>1-2</item>
-        <item>2-3</item>
-        <item>3-4</item>
-        <item>4-5</item>
-        <item>5-6</item>
-        <item>6-7</item>
-        <item>7-8</item>
-        <item>9-10</item>
-        <item>0-10</item>
-    </string-array>
-    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+    <!--Todo: Order Status -->
+    <string name="order_title_0">Waiting for acceptance</string>
+    <string name="order_title_1">Your order has been accepted.</string>
+    <string name="order_title_2">Order is preparing</string>
+    <string name="order_title_3">Order has been prepared and out for delivery</string>
+    <string name="order_title_4">Order has been delivered.</string>
+    <string name="restaurent_closed">This restaurant is currently closed </string>
+    <string name="restaurent_closed2">This restaurant is closed </string>
+    <string name="restaurent_closed3">The restaurant is temporarily closed</string>
+    <string name="pre_order_for_later"> Pre-order for later </string>
+
+    <string name="order_title_Details_0">Thank you for placing the order, we will inform you once</string>
+    <string name="order_title_Details_1">Your order has been accepted and will take </string>
+    <string name="order_title_Details_2">Your order has been accepted and will take </string>
+    <string name="order_title_Details_3">Your order is out for delivery and will reach you in  </string>
+    <string name="order_title_Details_4">Your order has been delivered. Enjoy your meal.</string>
+    <string name="having_no_orders">Having no orders</string>
+    <string name="note_added_successfully">Note Added \nSuccessfully</string>
+    <string name="market_communication">We’d like to send you discount coupons, exclusive offers and promotions by email, SMS and push notifications.\nYou can change these prefrerences anytime within this app.</string>
+    <string name="digit_value">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%*_+=&amp;!1234567890.</string>
+    <string name="delivery_times">Delivery Times</string>
+    <string name="collection_times">Collection Times</string>
+    <string name="first_time_payment_msg">For your security we require all new customers to place their first easyFood order by debit or credit card. \n\nThis is only required for your first order and all  furture orders may be paid with cash.</string>
+    <string name="order_rejected_msg">We’re sorry the restaurant has rejected your order, this may be due the restuarant recieving a high volume of orders. \n\nThere are many restaurants in your area accepting orders. \n\nAgain, we apologise for this inconvenience. Please click below to find an alternative restaurant.</string>
+
+    <string name="no_geocoder_available">No geocoder available</string>
+
+    <string name="fetch_address">Fetch address</string>
+
+    <string name="address_found">Address found</string>
+
+    <string name="no_address_found">Sorry, no address found</string>
+    <string name="no_location_data_provided">No location data provided</string>
+    <string name="service_not_available">Sorry, the service is not available</string>
+    <string name="invalid_lat_long_used">Invalid latitude or longitude used</string>
+
+
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="settings">Settings</string>
+    <string name="no_ratings">No Ratings</string>
+    <string name="no_address">No address found. \nPlease add a new address</string>
+    <string name="restaurant_closed_msg">This restaurant is currently closed.</string>
+    <string name="ok">OK</string>
+    <string name="view_basket">View Order</string>
+    <string name="collection">collection</string>
+    <string name="now">Now</string>
+    <string name="update">Confirm</string>
+    <string name="term">I agree to terms and condition.</string>
+    <string name="hygiene_rating_is_pending">Hygiene rating is pending</string>
+    <string name="hygiene_rating">The hygiene rating below is given by the Food Standards Agency and your local authority:</string>
+    <string name="isFavorate">IS_FAVORITE</string>
 
 </resources>
