@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:id="@+id/sizeName"
+            android:layout_gravity="center"
+            android:maxLength="30"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:textSize="@dimen/_12sdp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Size Name"/>
+        <EditText
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_six"
+            android:ems="10"
+            android:padding="@dimen/_2sdp"
+            android:textSize="@dimen/_12sdp"
+            android:inputType="numberDecimal"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="0.0"
+            android:textColor="#464545" />
+
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/modifiresList"/>
+
+
+</LinearLayout>

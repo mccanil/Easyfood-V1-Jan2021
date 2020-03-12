@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="Item"
-            android:textColor="@color/price_color"
+            android:textColor="@color/black"
             android:textStyle="normal" />
 
         <TextView
@@ -28,10 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:fontFamily="@font/avenir_roman"
+
             android:text="0.00"
             android:textStyle="normal"
-            android:textColor="@color/price_color" />
+            android:textColor="@color/black" />
     </LinearLayout>
 
 

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ProfileFragment">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f3f3f3"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/image_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="horizontal" />
+
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/add_more_image"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/rectangle_btn_color"
+                    android:text="Add More Pics"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/restname"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/rectangle_edit"
+                android:ems="10"
+                android:textColor="#000"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="left|start|center_vertical"
+                android:hint="Restaurant Name"
+                android:inputType="textPersonName"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text=""
+                android:textSize="@dimen/_14sdp" />
+
+
+            <EditText
+
+                android:id="@+id/serve_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:textColor="#000"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/rectangle_edit"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="left|start|center_vertical"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text="Collection"
+                android:textSize="@dimen/_14sdp" />
+
+            <EditText
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textColor="#000"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/rectangle_edit"
+                android:ems="10"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="top|left|start"
+                android:hint="About Restaurant"
+                android:inputType="textMultiLine"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:textSize="@dimen/_14sdp" />
+
+            <EditText
+                android:id="@+id/web"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:textColor="#000"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/rectangle_edit"
+                android:ems="10"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="left|start|center_vertical"
+                android:hint="Website URL"
+                android:inputType="textPersonName"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text=""
+                android:textSize="@dimen/_14sdp" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="#000"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/rectangle_edit"
+                android:ems="10"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="left|start|center_vertical"
+                android:hint="Phone Number"
+                android:inputType="number"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text=""
+                android:textSize="@dimen/_14sdp" />
+
+            <EditText
+                android:id="@+id/landline"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textColor="#000"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/rectangle_edit"
+                android:ems="10"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="left|start|center_vertical"
+                android:hint="Landline Number"
+                android:inputType="number"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text=""
+                android:textSize="@dimen/_14sdp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/rectangle_edit"
+                android:ems="10"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:textColor="#000"
+                android:gravity="left|start|center_vertical"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text=""
+                android:textSize="@dimen/_14sdp" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:textColor="#000"
+                android:background="@drawable/rectangle_edit"
+                android:ems="10"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="top|left|start"
+                android:hint="Your Address"
+                android:inputType="textMultiLine"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:textSize="@dimen/_14sdp" />
+
+            <EditText
+                android:id="@+id/postcode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:textColor="#000"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/rectangle_edit"
+                android:ems="10"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_semi_bold"
+                android:gravity="left|start|center_vertical"
+                android:hint="Area Post Code"
+                android:inputType="textPersonName"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:text=""
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:textSize="@dimen/_14sdp" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/rectangle_btn_color"
+                android:fontFamily="@font/raleway_bold"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</FrameLayout>

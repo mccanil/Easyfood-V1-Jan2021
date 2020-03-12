@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_bold"
+        android:text="Please select serve style"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp" />
+
+    <CheckBox
+        android:id="@+id/delivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="Delivery"
+        android:textSize="@dimen/_14sdp" />
+
+    <CheckBox
+        android:id="@+id/dinein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="Dine in"
+        android:textSize="@dimen/_14sdp" />
+
+    <CheckBox
+        android:id="@+id/collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="Collection"
+        android:textSize="@dimen/_14sdp" />
+
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_background"
+            android:text="Save"
+            android:gravity="center"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:background="@color/grey_bg"
+            android:text="Cancel"
+            android:gravity="center"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

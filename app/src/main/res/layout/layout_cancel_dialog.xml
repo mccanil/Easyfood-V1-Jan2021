@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created by Omnisttechhub Solution-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="@dimen/_110sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_logo_new" />
+
+
+                <ImageView
+                    android:id="@+id/iv_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_below="@+id/iv_logo"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/banner_four" />
+
+                <TextView
+                    android:id="@+id/tv_surity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_banner"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:gravity="center_horizontal"
+                    android:text="@string/are_you_sure_you_want_to_cancel"
+                    android:textColor="@color/txt_grey_two"
+                    android:textSize="@dimen/_16sdp" />
+
+                <TextView
+                    android:id="@+id/tv_cacel_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_surity"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="@dimen/_4sdp"
+                    android:text="@string/cancel_dialog_msg"
+                    android:textColor="@color/txt_grey_two"
+                    android:textSize="@dimen/_10sdp" />
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_cacel_msg"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:elevation="0dp"
+                    app:cardBackgroundColor="@color/grey_bg"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_toEndOf="@+id/tv_u_have"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/raleway_bold"
+                        android:paddingStart="@dimen/_30sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_30sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/yes"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp" />
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_cacel_msg"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:elevation="0dp"
+                    app:cardBackgroundColor="@color/bg_login_center"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_toEndOf="@+id/tv_u_have"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/raleway_bold"
+                        android:paddingStart="@dimen/_35sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_35sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:text="@string/no"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp" />
+                </android.support.v7.widget.CardView>
+            </RelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</layout>
