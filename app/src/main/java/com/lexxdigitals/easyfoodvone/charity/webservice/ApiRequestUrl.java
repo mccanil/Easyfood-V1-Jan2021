@@ -7,9 +7,12 @@ package com.lexxdigitals.easyfoodvone.charity.webservice;
 public class ApiRequestUrl {
 
 
-    public static String IMAGE_URL = "http://dc-api.omnisttechhub.com";
+    public static String IMAGE_URL = "https://admin.easyfood.co.uk";
 
-    public static final String BASE_URL = "http://35.177.163.219/mcc-easyfood-backend/public/api/v1_app/v1/";
+   /* public static final String BASE_URL = "http://35.177.163.219/mcc-easyfood-backend/public/api/v1_app/v1/";*/
+    public static final String BASE_URL = "https://admin.easyfood.co.uk/api/v1_app/v1/";
+
+
 
     static final String CHARITY_DETAIL_URL = "get_charitydetails";
     static final String DONATE_MEAL_URL = "savecharitymeal";

@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
@@ -33,10 +35,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.lexxdigitals.easyfoodvone.R;
 import com.lexxdigitals.easyfoodvone.api_handler.ApiClient;
 import com.lexxdigitals.easyfoodvone.api_handler.ApiInterface;
 import com.lexxdigitals.easyfoodvone.charity.CharityFragment;
+import com.lexxdigitals.easyfoodvone.charity.webservice.responsebean.NewDetailBean;
 import com.lexxdigitals.easyfoodvone.fragments.ChangePasswordFragment;
 import com.lexxdigitals.easyfoodvone.fragments.DeleverySettingFragment;
 import com.lexxdigitals.easyfoodvone.fragments.ListOfOffersFragment;
@@ -47,12 +51,14 @@ import com.lexxdigitals.easyfoodvone.fragments.ProfileFragment;
 import com.lexxdigitals.easyfoodvone.fragments.RatingReviewFragment;
 import com.lexxdigitals.easyfoodvone.fragments.RevenueReportFragment;
 import com.lexxdigitals.easyfoodvone.fragments.SetRestaurantTimingsFragment;
+import com.lexxdigitals.easyfoodvone.helper.PrintEsayFood;
 import com.lexxdigitals.easyfoodvone.login.models.LoginResponse;
 import com.lexxdigitals.easyfoodvone.login.view.impl.LoginActivity;
 import com.lexxdigitals.easyfoodvone.menu.CommonRequest;
 import com.lexxdigitals.easyfoodvone.models.ServeStyleResponse;
 import com.lexxdigitals.easyfoodvone.models.SetServeStyleRequest;
 import com.lexxdigitals.easyfoodvone.new_order.models.CommonResponse;
+import com.lexxdigitals.easyfoodvone.new_order.view.impl.NewOrderActivity;
 import com.lexxdigitals.easyfoodvone.orders.adapter.AdapterOrderList;
 import com.lexxdigitals.easyfoodvone.orders.presenter.OrdersPresenter;
 import com.lexxdigitals.easyfoodvone.restaurant_models.RestaurantOpenCloseRequest;
@@ -74,7 +80,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import static com.lexxdigitals.easyfoodvone.utility.Helper.isInternetOn;
 import static com.lexxdigitals.easyfoodvone.utility.Helper.setFragment;
 
 
@@ -112,6 +122,7 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
     DrawerLayout drawer;
     private static OrdersActivity instance = null;
     int fragCount = 1;
+    // NewDetailBean.OrdersDetailsBean orderDetailsResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,8 +182,13 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
         if (getIntent().hasExtra(Constants.NOTIFICATION_TYPE_ACCEPTED)) {
             if (getIntent().getStringExtra(Constants.NOTIFICATION_TYPE_ACCEPTED).equals(Constants.NOTIFICATION_TYPE_ACCEPTED) &&
                     UserPreferences.getUserPreferences().getResponse(OrdersActivity.this, Constants.LOGIN_RESPONSE) != null) {
+               /* if (getIntent().getStringExtra(Constants.ORDER_NUMBER) != null) {
+                    //getOrederDetails(getIntent().getStringExtra(Constants.ORDER_NUMBER));
+                }*/
                 loadFragment(new OrderListFragment(getApplicationContext()));
                 onTabClickEvents();
+
+
             } else {
                 Constants.switchActivity(OrdersActivity.this, OrdersActivity.class);
                 finish();
@@ -485,6 +501,20 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
     }
 
 
+    private void printOrder(NewDetailBean.OrdersDetailsBean orderDetailsResponse) {
+        byte[] logoByte = UserPreferences.getUserPreferences().getByteArray(OrdersActivity.this, Constants.RESTAURANT_LOGO);
+        Bitmap logo = null;
+        if (logoByte != null) {
+            logo = BitmapFactory.decodeByteArray(logoByte, 0, logoByte.length);
+//                    logo = Bitmap.createScaledBitmap(logo, logo.getWidth(), 80, false);
+        }
+
+        if (orderDetailsResponse != null) {
+//                    Print ANAND
+            PrintEsayFood.printOrderNew(OrdersActivity.this, logo, Constants.getStoredData(OrdersActivity.this), orderDetailsResponse);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -632,6 +662,7 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
         try {
             CommonRequest commonRequest = new CommonRequest();
             commonRequest.setUser_id(Constants.getStoredData(OrdersActivity.this).getUser_id());
+            commonRequest.setFcm_id(UserPreferences.getUserPreferences().getString(OrdersActivity.this, Constants.FIREBASE_TOKEN) != null ? UserPreferences.getUserPreferences().getString(OrdersActivity.this, Constants.FIREBASE_TOKEN) : "");
 
             ApiInterface apiService = ApiClient.getClient(this).create(ApiInterface.class);
             CompositeDisposable disposable = new CompositeDisposable();
@@ -836,5 +867,54 @@ public class OrdersActivity extends AppCompatActivity implements NavigationView.
 
             }
         });
+    }
+
+
+    private void getOrederDetails(String orderNumber) {
+        if (isInternetOn(this)) {
+            final LoadingDialog dialog = new LoadingDialog(this, "");
+            dialog.setCancelable(false);
+            dialog.show();
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("order_number", orderNumber);
+            com.lexxdigitals.easyfoodvone.charity.webservice.ApiInterface apiInterface = com.lexxdigitals.easyfoodvone.charity.webservice.ApiClient.getClient().create(com.lexxdigitals.easyfoodvone.charity.webservice.ApiInterface.class);
+            Call<NewDetailBean> call = apiInterface.getOrderDetail(jsonObject);
+
+            Log.e("Login Request", "" + jsonObject);
+            call.enqueue(new Callback<NewDetailBean>() {
+                @Override
+                public void onResponse(@NonNull Call<NewDetailBean> call, @NonNull Response<NewDetailBean> response) {
+                    try {
+                        if (response.isSuccessful()) {
+                            dialog.dismiss();
+                            //  swipeRefresh.setRefreshing(false);
+                            NewDetailBean newDetailBean = response.body();
+                            if (newDetailBean.isSuccess()) {
+                                Toast.makeText(OrdersActivity.this, "Success Print Now", Toast.LENGTH_SHORT).show();
+                                // orderDetailsResponse = newDetailBean.getOrders_details();
+                                //printOrder(newDetailBean.getOrders_details());
+                                //setAdapter(orderDetailsResponse.getCart().getMenu());
+                            } /*else {
+                                showSnackBar(view, commonResponseBean.getMessage());
+                            }*/
+
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<NewDetailBean> call, @NonNull Throwable t) {
+                    if (dialog != null)
+                        dialog.dismiss();
+                    //  swipeRefresh.setRefreshing(false);
+                    // showSnackBar(view, getString(R.string.msg_please_try_later));
+                }
+            });
+        } else {
+            // showSnackBar(view, getString(R.string.no_internet_available_msg));
+
+        }
     }
 }

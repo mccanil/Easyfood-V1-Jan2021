@@ -58,6 +58,7 @@ public class Constants {
     public static final String ORDER_DETAIL = "order_detail";
     public static final String MY_PRERENCES = "preferense";
     public static final String RESTAURANT_LOGO = "restaurant_logo";
+    public static final String ORDER_NUMBER = "orderNumber";
     public static DialogClickedListener dialogClicked;
     public static int ORDER_COUNT = 0;
     private static DecimalFormat decimalFormat = new DecimalFormat("#0.00");

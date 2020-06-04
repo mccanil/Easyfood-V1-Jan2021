@@ -1,8 +1,9 @@
 package com.lexxdigitals.easyfoodvone.api_handler;
 
 public class ApiConstants {
+    public static final String BASE_URL = "https://admin.easyfood.co.uk/api/v1_app/v1/";
 
-    public static final String BASE_URL = "http://35.177.163.219/mcc-easyfood-backend/public/api/v1_app/v1/";
+    /*    public static final String BASE_URL = "http://35.177.163.219/mcc-easyfood-backend/public/api/v1_app/v1/";*/
     public static final String LOGIN = "login";
     public static final String LOGOUT = "user_logout";
     public static final String CONTACT_SUPPORT = "supports";

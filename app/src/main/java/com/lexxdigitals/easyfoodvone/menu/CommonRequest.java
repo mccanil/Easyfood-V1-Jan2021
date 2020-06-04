@@ -55,6 +55,18 @@ public class CommonRequest {
     @SerializedName("filter")
     String filter;
 
+    public String getFcm_id() {
+        return fcm_id;
+    }
+
+    public void setFcm_id(String fcm_id) {
+        this.fcm_id = fcm_id;
+    }
+
+    @Expose
+    @SerializedName("fcm_id")
+    String fcm_id;
+
     public String getOffer_type() {
         return offer_type;
     }

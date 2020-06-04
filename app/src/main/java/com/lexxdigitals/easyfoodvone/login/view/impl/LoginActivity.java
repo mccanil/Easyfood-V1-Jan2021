@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ef.webnseo.co.uk/restaurant-signup"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.easyfood.co.uk/restaurant-signup"));
                 startActivity(browserIntent);
             }
         });

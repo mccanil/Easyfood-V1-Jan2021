@@ -6,15 +6,19 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Ringtone;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.google.gson.JsonObject;
 import com.lexxdigitals.easyfoodvone.api_handler.ApiClient;
 import com.lexxdigitals.easyfoodvone.api_handler.ApiInterface;
+import com.lexxdigitals.easyfoodvone.charity.webservice.responsebean.NewDetailBean;
 import com.lexxdigitals.easyfoodvone.helper.PrintEsayFood;
 import com.lexxdigitals.easyfoodvone.login.models.LoginResponse;
 import com.lexxdigitals.easyfoodvone.login.view.impl.LoginActivity;
@@ -25,14 +29,19 @@ import com.lexxdigitals.easyfoodvone.notificationUtils.NotificationUtils;
 import com.lexxdigitals.easyfoodvone.orders.view.impl.OrdersActivity;
 import com.lexxdigitals.easyfoodvone.utility.ApplicationContext;
 import com.lexxdigitals.easyfoodvone.utility.Constants;
+import com.lexxdigitals.easyfoodvone.utility.LoadingDialog;
 import com.lexxdigitals.easyfoodvone.utility.UserPreferences;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.lexxdigitals.easyfoodvone.utility.Constants.CHARITY_STATUS_INTENT;
+import static com.lexxdigitals.easyfoodvone.utility.Helper.isInternetOn;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -70,11 +79,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     if (notif_type.equals(Constants.NOTIFICATION_TYPE_ACCEPTED)) {
                         Intent intent = new Intent(Constants.NOTIFICATION_TYPE_ACCEPTED);
                         intent.putExtra("message", message);
+                        intent.putExtra(Constants.ORDER_NUMBER, order_number);
 
                         if (userPreferences.getResponse(this, Constants.LOGIN_RESPONSE) != null) {
                             resultIntent = new Intent(this, OrdersActivity.class);
-                            if (!TextUtils.isEmpty(order_number))
-                                orderDetailsNew(order_number);
+                            if (!TextUtils.isEmpty(order_number)) {
+                                //orderDetailsNew(order_number);
+                                getOrederDetails(order_number);
+                            }
 
                         } else {
                             resultIntent = new Intent(this, LoginActivity.class);
@@ -190,7 +202,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     }
 
-    private void orderDetailsNew(String ordersNumber) {
+    private void orderDetailsNew(final String ordersNumber) {
 
         try {
             OrderDetailsRequest request = new OrderDetailsRequest();
@@ -204,6 +216,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     .subscribeWith(new DisposableSingleObserver<OrdersDetailsResponseNew>() {
                         @Override
                         public void onSuccess(OrdersDetailsResponseNew data) {
+                            Log.e("PrintHere", "" + ordersNumber);
 
                             byte[] logoByte = UserPreferences.getUserPreferences().getByteArray(getApplicationContext(), Constants.RESTAURANT_LOGO);
                             Bitmap logo = null;
@@ -211,7 +224,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                                 logo = BitmapFactory.decodeByteArray(logoByte, 0, logoByte.length);
                                 //logo = Bitmap.createScaledBitmap(logo, logo.getWidth(), 80, false);
                             }
-                           // PrintEsayFood.printOrderNew(getApplicationContext(), logo, Constants.getStoredData(getApplicationContext()), data.getOrdersDetails());
+                            // PrintEsayFood.printOrderNew(getApplicationContext(), logo, Constants.getStoredData(getApplicationContext()), data.getOrdersDetails());
 
                         }
 
@@ -226,6 +239,48 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         }
 
+    }
+
+
+    private void getOrederDetails(String orderNumber) {
+        if (isInternetOn(this)) {
+
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("order_number", orderNumber);
+            com.lexxdigitals.easyfoodvone.charity.webservice.ApiInterface apiInterface = com.lexxdigitals.easyfoodvone.charity.webservice.ApiClient.getClient().create(com.lexxdigitals.easyfoodvone.charity.webservice.ApiInterface.class);
+            Call<NewDetailBean> call = apiInterface.getOrderDetail(jsonObject);
+
+            call.enqueue(new Callback<NewDetailBean>() {
+                @Override
+                public void onResponse(@NonNull Call<NewDetailBean> call, @NonNull Response<NewDetailBean> response) {
+                    try {
+                        if (response.isSuccessful()) {
+                            NewDetailBean newDetailBean = response.body();
+                            if (newDetailBean.isSuccess()) {
+                                byte[] logoByte = UserPreferences.getUserPreferences().getByteArray(getApplicationContext(), Constants.RESTAURANT_LOGO);
+                                Bitmap logo = null;
+                                if (logoByte != null) {
+                                    logo = BitmapFactory.decodeByteArray(logoByte, 0, logoByte.length);
+                                }
+                                if (newDetailBean.getOrders_details() != null) {
+                                    PrintEsayFood.printOrderNew(getApplicationContext(), logo, Constants.getStoredData(getApplicationContext()), newDetailBean.getOrders_details());
+                                }
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<NewDetailBean> call, @NonNull Throwable t) {
+                    Log.e("Print", "" + t.getMessage());
+                    //  swipeRefresh.setRefreshing(false);
+                    // showSnackBar(view, getString(R.string.msg_please_try_later));
+                }
+            });
+        }
     }
 
 }

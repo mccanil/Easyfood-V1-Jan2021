@@ -373,7 +373,7 @@ public class PrintEsayFood {
 
                     AidlUtil.getInstance().printText(line24Bold, 24, true, false, 1);
 
-                    AidlUtil.getInstance().printText(cartData, 21, true, false, 0, 1);
+                    AidlUtil.getInstance().printText(cartData, 22, true, false, 0, 1);
 
                     AidlUtil.getInstance().printText(line24Bold, 24, true, false, 1);
 
@@ -387,7 +387,9 @@ public class PrintEsayFood {
 //                    AidlUtil.getInstance().printText(footer, 24, true, false, 1);
 
                     AidlUtil.getInstance().printText(printSpaceBetweenTwoString("DISCOUNT", context.getResources().getString(R.string.currency) + Constants.decimalFormat(Double.parseDouble(orderDetail.getDiscount_amount())), 32), 24, false, false, 1);
-                    AidlUtil.getInstance().printText(printSpaceBetweenTwoString("DELIVERY CHARGE", context.getResources().getString(R.string.currency) + Constants.decimalFormat(Double.parseDouble(orderDetail.getDelivery_charge())), 32), 24, false, false, 1);
+                    if (orderDetail.getDelivery_option().toUpperCase().equals("DELIVERY")) {
+                        AidlUtil.getInstance().printText(printSpaceBetweenTwoString("DELIVERY CHARGE", context.getResources().getString(R.string.currency) + Constants.decimalFormat(Double.parseDouble(orderDetail.getDelivery_charge())), 32), 24, false, false, 1);
+                    }
                     AidlUtil.getInstance().printText(printSpaceBetweenTwoString("PAYMENT METHOD", orderDetail.getPayment_mode().toUpperCase(), 32), 24, true, false, 1);
                     AidlUtil.getInstance().printText(printSpaceBetweenTwoString("TOTAL", context.getResources().getString(R.string.currency) + Constants.decimalFormat(Double.parseDouble(orderDetail.getOrder_total())), 32), 24, true, false, 5);
 
@@ -1415,7 +1417,7 @@ public class PrintEsayFood {
         return priceSpace;
     }
 
-    private static String createProductNameString(int charCountNew, String _productName) {
+   /* private static String createProductNameString(int charCountNew, String _productName) {
         String productName = _productName;
         int totalProductNameLength = productName.length();
         if (charCountNew < totalProductNameLength) {
@@ -1455,7 +1457,7 @@ public class PrintEsayFood {
         ItemLengthCheckS = first + "\n   " + second;
 
         return ItemLengthCheckS;
-    }
+    }*/
 
     public static String AddressNameCorrect(String Address) {
         String AddressToPrint = "", FirstAdd = "", SecondAdd = "", ThirdAdd = "", FourthAdd = "";
@@ -1571,7 +1573,7 @@ public class PrintEsayFood {
         return AddressToPrint + " ";
     }
 
-    private static String makeCartData(Context context, List<OrderDetailsResponse.OrderDetails.Cart> cart, int charCount) {
+   /* private static String makeCartData(Context context, List<OrderDetailsResponse.OrderDetails.Cart> cart, int charCount) {
         int qtyCharCount = 4;
         int priceCharCount = 6;
         int charCountNew = charCount - qtyCharCount;
@@ -1645,9 +1647,9 @@ public class PrintEsayFood {
     }
 
     public static void printOrder(Bitmap logo, OrderDetailsResponse.OrderDetails orderDetail, Context activity) {
-       /* if (true){
+       *//* if (true){
             return;
-        }*/
+        }*//*
 
 
         String restaurantName = Constants.getStoredData(activity).getRestaurant_name();
@@ -1708,7 +1710,7 @@ public class PrintEsayFood {
             msg.obj = "Printer not attached";
             Toast.makeText(activity, "Printer not attached", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     public static void printOrder1(Bitmap logo, OrderDetailsResponse.OrderDetails orderDetail, Context activity) {
         DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
@@ -1750,14 +1752,25 @@ public class PrintEsayFood {
         String orderId = String.format("Order ID: %s", orderDetail.getOrder_num());
         String orderDate = String.format("Order Date: %s", orderDetail.getOrder_date_time()) + "\n"
                 + String.format("%s", "----------------------------------");
-        String data = String.format("%s", "----------------------------------") + "\n"
-                + String.format("%s", alignString(totalChar, "Payment Method", orderDetail.getPayment_mode())) + "\n"
+        String data;
+        if (orderDetail.getDelivery_option().toUpperCase().equals("DELIVERY")) {
+            data = String.format("%s", "----------------------------------") + "\n"
+                    + String.format("%s", alignString(totalChar, "Payment Method", orderDetail.getPayment_mode())) + "\n"
 //                + String.format("%s", alignString(totalChar, "Requested For", orderDetail.getDelivery_date_time())) + "\n"
-                + String.format("%s", alignString(totalChar, "Sub total", "£" + orderDetail.getSub_total())) + "\n"
-                + String.format("%s", alignString(totalChar, "Discount", "£" + orderDetail.getDiscount_amount())) + "\n"
-                + String.format("%s", alignString(totalChar, "Delivery Charge", "£" + orderDetail.getDelivery_charge())) + "\n"
-                + String.format("%s", alignString(totalChar, "Total amount", (orderDetail.getOrder_total() != null) ? "£" + orderDetail.getOrder_total() : "£")) + "\n"
-                + String.format("%s", "----------------------------------") + "\n";
+                    + String.format("%s", alignString(totalChar, "Sub total", "£" + orderDetail.getSub_total())) + "\n"
+                    + String.format("%s", alignString(totalChar, "Discount", "£" + orderDetail.getDiscount_amount())) + "\n"
+                    + String.format("%s", alignString(totalChar, "Delivery Charge", "£" + orderDetail.getDelivery_charge())) + "\n"
+                    + String.format("%s", alignString(totalChar, "Total amount", (orderDetail.getOrder_total() != null) ? "£" + orderDetail.getOrder_total() : "£")) + "\n"
+                    + String.format("%s", "----------------------------------") + "\n";
+        } else {
+            data = String.format("%s", "----------------------------------") + "\n"
+                    + String.format("%s", alignString(totalChar, "Payment Method", orderDetail.getPayment_mode())) + "\n"
+//                + String.format("%s", alignString(totalChar, "Requested For", orderDetail.getDelivery_date_time())) + "\n"
+                    + String.format("%s", alignString(totalChar, "Sub total", "£" + orderDetail.getSub_total())) + "\n"
+                    + String.format("%s", alignString(totalChar, "Discount", "£" + orderDetail.getDiscount_amount())) + "\n"
+                    + String.format("%s", alignString(totalChar, "Total amount", (orderDetail.getOrder_total() != null) ? "£" + orderDetail.getOrder_total() : "£")) + "\n"
+                    + String.format("%s", "----------------------------------") + "\n";
+        }
 
 
 //        String item = createItem(totalChar, orderDetail.getCart().get(0).getItems());
@@ -1771,7 +1784,7 @@ public class PrintEsayFood {
             AidlUtil.getInstance().printText(header, 24, false, false, 1);
             AidlUtil.getInstance().printText(orderId, 22, false, false, 1);
             AidlUtil.getInstance().printText(orderDate, 22, false, false, 1);
-            AidlUtil.getInstance().printText(item, 22, false, false, 0);
+            AidlUtil.getInstance().printText(item, 22, true, false, 0);
             AidlUtil.getInstance().printText(data, 22, false, false, 1);
             AidlUtil.getInstance().printText(alignString(totalChar, "Note", ""), 22, false, false, 1);
             AidlUtil.getInstance().printText(orderDetail.getOrder_notes() + "", 20, false, false, 1);
@@ -1848,7 +1861,7 @@ public class PrintEsayFood {
         return data.toString();
     }
 
-    public static void printCompletedOrder(Bitmap logo, OrderDetailsResponse.OrderDetails orderDetail, Context activity) {
+ /*   public static void printCompletedOrder(Bitmap logo, OrderDetailsResponse.OrderDetails orderDetail, Context activity) {
 
         DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
         DateFormat timeFormat = new SimpleDateFormat("HH:mm a");
@@ -1950,7 +1963,7 @@ public class PrintEsayFood {
 //        int i = 1;
 
 
-        /*for (int j = 0; j <orderDetail.getCart().size() ; j++) {
+        *//*for (int j = 0; j <orderDetail.getCart().size() ; j++) {
 
         }
         for (OrderDetailsResponse.OrderDetails.Cart  orderedItemsModel : orderDetail.getCart()) {
@@ -2023,18 +2036,18 @@ public class PrintEsayFood {
 
 
             i++;
-        }*/
+        }*//*
 
 
 
-        /*String amt =
+     *//*String amt =
                 "\n \n \n"
                         + padLeftSpaces("Sub total =", Double.parseDouble()) + "\n"
                         + padLeftSpaces("Discount =", Double.parseDouble() + "\n"
                         + padLeftSpaces("Total amount =", Double.parseDouble()));
 
         bill = bill + amt;
-        System.out.println(bill);*/
+        System.out.println(bill);*//*
 //        if (AidlUtil.getInstance().isConnect()) {
 //            if (logo != null)
 //                AidlUtil.getInstance().printBitmap(logo);
@@ -2062,9 +2075,9 @@ public class PrintEsayFood {
                 AidlUtil.getInstance().printBitmap(footerBitmap);
             AidlUtil.getInstance().cutPaper();
         }
-    }
+    }*/
 
-
+/*
     public static Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();
         int height = image.getHeight();
@@ -2101,5 +2114,5 @@ public class PrintEsayFood {
     public static String padLeftSpaces(String trailingHeader, Double str) {
 //        return String.format("%1$" + calculateSpaces(String.valueOf(str) + trailingHeader) + "s", trailingHeader + String.format(Locale.getDefault(), "£%.2f", str));
         return String.format("%1$" + 55 + "s", trailingHeader + String.format(Locale.getDefault(), "£%.2f", str));
-    }
+    }*/
 }

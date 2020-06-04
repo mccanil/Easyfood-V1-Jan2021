@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Easy Food</string>
+    <string name="app_name">Manager App</string>
 
     <!--**********************************Signin Activity************************************-->
     <string name="currency">\u00a3</string>
