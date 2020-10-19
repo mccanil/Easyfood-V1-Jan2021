@@ -37,6 +37,7 @@
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:textAllCaps="false"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:textColor="#656565"
                     android:textSize="@dimen/_14sdp"
                     android:text="Today" />
@@ -213,6 +214,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:background="#f1f1f1"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView
@@ -327,6 +329,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@color/white"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView

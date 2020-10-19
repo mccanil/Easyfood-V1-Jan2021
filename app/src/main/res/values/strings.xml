@@ -26,7 +26,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_test_main">TestMainActivity</string>
     <string name="average_time_for_delivery">Average time for delivery:</string>
-
+    <string name="easyfood">easyFood</string>
+    <string name="update_now">Update Now</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mpin">Please enter 4 digit pin code\nto view item details</string>
@@ -73,6 +74,8 @@
     <string name="cancelled">Cancelled</string>
     <string name="meals">Meals</string>
     <string name="register">Register</string>
+    <string name="go_back_login_">Go back to login if signup is successfull</string>
+    <string name="back">Back</string>
     <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
     <string-array name="ratings_arrays">
         <item>All Star</item>

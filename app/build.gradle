@@ -4,11 +4,11 @@ apply plugin: 'newrelic'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.lexxdigitals.easyfoodvone"
+        applicationId "com.easyfoodvone"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 2
-        versionName "1.01"
+        versionCode 5
+        versionName "1.05"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

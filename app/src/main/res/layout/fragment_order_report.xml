@@ -37,6 +37,7 @@
                     android:background="@drawable/border_three"
                     android:gravity="center"
                     android:text="Today"
+                    android:visibility="gone"
                     android:textAllCaps="false"
                     android:textColor="#656565"
                     android:textSize="@dimen/_14sdp" />
@@ -431,6 +432,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <LinearLayout

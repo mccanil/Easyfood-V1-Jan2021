@@ -439,11 +439,11 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_weight="0.6"
                         android:ellipsize="end"
-                        android:fontFamily="@font/raleway_semi_bold"
+                        android:fontFamily="@font/open_sans_semi_bold"
                         android:gravity="start|left"
                         android:maxLines="1"
-                        android:text=""
-                        android:textColor="#686868"
+                        android:text="Items"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
                     <TextView

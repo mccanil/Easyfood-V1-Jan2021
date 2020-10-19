@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#ff5200</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="black">#000000</color>
@@ -31,6 +31,9 @@
     <color name="inactive_category_count">#D5CECD</color>
     <color name="grey_bg">#BED6D6D6</color>
     <color name="bg_new_order">#fbf3ee</color>
+    <color name="seme_transparent">#95000000</color>
+    <color name="gray">#9d9d9c</color>
+    <color name="colorBlue">#3B92EF</color>
 
     <color name="start_color">#FFFFFF</color>
     <color name="end_color">#fbf3ee</color>

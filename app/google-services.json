@@ -8,6 +8,50 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:791723792585:android:b8886ce6b874d18d01d518",
+        "android_client_info": {
+          "package_name": "com.easyfoodvone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791723792585-pbhi48ct139cdvb9qgjfs3or53cb1mkt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.easyfoodvone",
+            "certificate_hash": "352c4a1ce35111fea27090795771e759c433ab98"
+          }
+        },
+        {
+          "client_id": "791723792585-1jgl2tqb5lmk19qqip1u5r4u990900fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1s__EzjwC1eM63yXjmGCQsN3GwxOS4tE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791723792585-1jgl2tqb5lmk19qqip1u5r4u990900fa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "791723792585-quo60djplf45thsokhv1ju47k5nrk4cj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.easyfoodv1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:791723792585:android:3eeb85cf0e0cc295",
         "android_client_info": {
           "package_name": "com.lexxdigitals.easyfoodvone"
