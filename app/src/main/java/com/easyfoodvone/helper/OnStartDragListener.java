@@ -1,6 +1,6 @@
 package com.easyfoodvone.helper;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by javierg on 12/10/2016.

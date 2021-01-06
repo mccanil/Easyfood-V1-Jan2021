@@ -168,7 +168,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">-->
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -474,7 +474,7 @@
                     android:layout_height="@dimen/_1sdp"
                     android:background="#666666" />
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/list_order_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -795,6 +795,6 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical" />
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
     <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 </LinearLayout>

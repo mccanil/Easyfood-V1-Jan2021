@@ -42,7 +42,7 @@ public class ApplicationContext extends Application {
                 player.setLooping(true);
                 player.start();
                 mediaPlayerStartTime = Calendar.getInstance().getTime();
-                handler.postDelayed(stopPlayer, (1000 * 60));
+                handler.postDelayed(stopPlayer, (1000 * 180));
             }
         } catch (Exception e) {
             e.printStackTrace();

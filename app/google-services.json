@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "791723792585-r7654iqcd9j91mfmutnkdghbk3gd2nho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.easyfoodvone",
+            "certificate_hash": "1c609eb200acb17079dbc3837f831a58e76fb892"
+          }
+        },
+        {
           "client_id": "791723792585-pbhi48ct139cdvb9qgjfs3or53cb1mkt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

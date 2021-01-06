@@ -10,7 +10,7 @@
     android:background="@color/white"
     tools:showIn="@layout/app_bar_orders">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_orders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

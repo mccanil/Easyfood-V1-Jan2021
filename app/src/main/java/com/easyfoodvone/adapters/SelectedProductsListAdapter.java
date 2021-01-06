@@ -1,9 +1,9 @@
 package com.easyfoodvone.adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,6 @@ import com.easyfoodvone.models.MenuProducts;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class SelectedProductsListAdapter extends RecyclerView.Adapter<SelectedProductsListAdapter.MainProductsView> implements OnChildChckBoxChecked {
 

@@ -6,37 +6,25 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Ringtone;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.easyfoodvone.utility.PrefManager;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.JsonObject;
-import com.easyfoodvone.api_handler.ApiClient;
-import com.easyfoodvone.api_handler.ApiInterface;
 import com.easyfoodvone.charity.webservice.responsebean.NewDetailBean;
 import com.easyfoodvone.helper.PrintEsayFood;
 import com.easyfoodvone.login.models.LoginResponse;
 import com.easyfoodvone.login.view.impl.LoginActivity;
-import com.easyfoodvone.models.menu_response.OrdersDetailsResponseNew;
-import com.easyfoodvone.new_order.models.OrderDetailsRequest;
-import com.easyfoodvone.new_order.models.OrderDetailsResponse;
 import com.easyfoodvone.notificationUtils.NotificationUtils;
 import com.easyfoodvone.orders.view.impl.OrdersActivity;
 import com.easyfoodvone.utility.ApplicationContext;
 import com.easyfoodvone.utility.Constants;
-import com.easyfoodvone.utility.LoadingDialog;
 import com.easyfoodvone.utility.UserPreferences;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -99,7 +87,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                         resultIntent.putExtra("message", message);
                         showNotificationMessage(getApplicationContext(), "New Orders!", message, timestamp, resultIntent);
-                        playNotificationSound();
+                       // playNotificationSound();
                         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
                     } else if (notif_type.equals(Constants.NOTIFICATION_CHARITY_STATUS)) {
                         Intent charityIntent = new Intent(CHARITY_STATUS_INTENT);
@@ -124,7 +112,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                             showNotificationMessage(getApplicationContext(), "Hey! Its Restaurant Closing Time ", message, timestamp, resultIntent);
                         }
-                        playNotificationSound();
+                       // playNotificationSound();
                     } else if (notif_type.equals(Constants.NOTIFICATION_TYPE_CANCELED)) {
 
                     }

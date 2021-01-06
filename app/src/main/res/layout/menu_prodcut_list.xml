@@ -48,7 +48,7 @@
             android:textSize="@dimen/_12sdp" />
 
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:padding="@dimen/_4sdp"
         android:id="@+id/subProductList"
         android:layout_width="match_parent"

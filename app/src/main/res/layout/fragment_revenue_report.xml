@@ -7,7 +7,7 @@
     android:background="@color/white"
     tools:context=".fragments.RevenueReportFragment">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:visibility="visible"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -369,7 +369,7 @@
                 android:orientation="horizontal">
             </LinearLayout>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"

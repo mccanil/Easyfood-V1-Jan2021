@@ -12,12 +12,12 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -43,7 +43,6 @@ import com.easyfoodvone.models.RestaurantClosingTimeByDataModel;
 import com.easyfoodvone.new_order.models.AcceptRejectOrderRequest;
 import com.easyfoodvone.new_order.models.CommonResponse;
 import com.easyfoodvone.new_order.models.TimeSlotRequest;
-import com.easyfoodvone.new_order.models.TimeSlotResponse;
 import com.easyfoodvone.orders.adapter.AdapterOrderList;
 import com.easyfoodvone.orders.models.OrdersListResponse;
 import com.easyfoodvone.orders.models.OrdersRequest;
@@ -57,10 +56,6 @@ import com.easyfoodvone.utility.UserPreferences;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -71,7 +66,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.easyfoodvone.utility.Constants.CHARITY_STATUS_INTENT;
 import static com.easyfoodvone.utility.Constants.NOTIFICATION_TYPE_ACCEPTED;
 import static com.easyfoodvone.utility.UserContants.AUTH_TOKEN;
 

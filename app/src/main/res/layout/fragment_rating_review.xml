@@ -66,7 +66,7 @@
                         android:textColor="@color/bg_login_start"
                         android:textSize="@dimen/_16sdp" />
 
-                    <android.support.v7.widget.AppCompatRatingBar
+                    <androidx.appcompat.widget.AppCompatRatingBar
                         android:id="@+id/ratingBarAverage"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
@@ -172,7 +172,7 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rating_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

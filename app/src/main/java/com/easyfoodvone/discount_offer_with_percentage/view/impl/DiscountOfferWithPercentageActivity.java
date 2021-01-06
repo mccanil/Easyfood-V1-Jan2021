@@ -15,13 +15,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -282,7 +282,7 @@ public class DiscountOfferWithPercentageActivity extends AppCompatActivity imple
             int hasPerm = pm.checkPermission(Manifest.permission.CAMERA, getPackageName());
             if (hasPerm == PackageManager.PERMISSION_GRANTED) {
                 final CharSequence[] options = {"Take Photo", "Choose From Gallery", "Cancel"};
-                android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(DiscountOfferWithPercentageActivity.this);
+                androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(DiscountOfferWithPercentageActivity.this);
                 builder.setTitle("Select Option");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override

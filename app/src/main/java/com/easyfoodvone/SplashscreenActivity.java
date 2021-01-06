@@ -2,7 +2,7 @@ package com.easyfoodvone;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.easyfoodvone.login.view.impl.LoginActivity;
 import com.easyfoodvone.orders.view.impl.OrdersActivity;

@@ -173,7 +173,7 @@
         </LinearLayout>
 
     </LinearLayout>
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -804,7 +804,7 @@
                     android:textSize="@dimen/_12sdp"/>
 
             </RadioGroup>
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:visibility="gone"
                 android:background="#F2F2F7"
                 android:padding="@dimen/_5sdp"
@@ -908,7 +908,7 @@
 
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 

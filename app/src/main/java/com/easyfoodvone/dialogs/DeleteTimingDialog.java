@@ -3,10 +3,9 @@ package com.easyfoodvone.dialogs;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.easyfoodvone.R;

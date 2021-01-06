@@ -1,7 +1,7 @@
 package com.easyfoodvone.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;

@@ -6,10 +6,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,8 +33,6 @@ import com.easyfoodvone.spend_x_get_x_discount.view.impl.SpendXgetXdiscountActiv
 import com.easyfoodvone.utility.Constants;
 import com.easyfoodvone.utility.LoadingDialog;
 import com.easyfoodvone.utility.PrefManager;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

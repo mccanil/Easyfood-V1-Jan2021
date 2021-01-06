@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +20,6 @@ import com.easyfoodvone.contact_support.models.SupportRequest;
 import com.easyfoodvone.contact_support.models.SupportResponse;
 import com.easyfoodvone.contact_support.view.ContactSupportView;
 import com.easyfoodvone.contact_support.presenter.ContactSupportPresenter;
-import com.easyfoodvone.flat_discount_amount_offer.view.impl.FlatDiscountAmountOfferActivity;
 import com.easyfoodvone.utility.LoadingDialog;
 import com.easyfoodvone.utility.PrefManager;
 

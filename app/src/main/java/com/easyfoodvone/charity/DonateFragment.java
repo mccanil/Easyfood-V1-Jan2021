@@ -2,25 +2,20 @@ package com.easyfoodvone.charity;
 
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import androidx.databinding.DataBindingUtil;
+
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.easyfoodvone.utility.PrefManager;
 import com.google.gson.JsonObject;
